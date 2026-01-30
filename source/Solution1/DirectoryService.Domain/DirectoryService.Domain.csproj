@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+  <ItemGroup>
+    <EditorConfigFiles Remove="D:\lim\source\Solution1\DirectoryService.Domain\.editorconfig" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="D:\lim\source\Solution1\DirectoryService.Domain\.editorconfig" />
+  </ItemGroup>
+</Project>

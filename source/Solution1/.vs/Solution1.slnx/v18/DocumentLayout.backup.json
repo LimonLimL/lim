@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "D:\\lim\\source\\Solution1\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{7D3A5845-5B0B-4E79-8310-ACAF95458DF3}|DirectoryService.Domain\\DirectoryService.Domain.csproj|d:\\lim\\source\\solution1\\directoryservice.domain\\.editorconfig||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{7D3A5845-5B0B-4E79-8310-ACAF95458DF3}|DirectoryService.Domain\\DirectoryService.Domain.csproj|solutionrelative:directoryservice.domain\\.editorconfig||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{7D3A5845-5B0B-4E79-8310-ACAF95458DF3}|DirectoryService.Domain\\DirectoryService.Domain.csproj|d:\\lim\\source\\solution1\\directoryservice.domain\\directoryservice.domain.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
       "RelativeMoniker": "D:0:0:{7D3A5845-5B0B-4E79-8310-ACAF95458DF3}|DirectoryService.Domain\\DirectoryService.Domain.csproj|solutionrelative:directoryservice.domain\\directoryservice.domain.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
@@ -18,8 +22,21 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 3,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "DirectoryService.Domain",
+              "DocumentMoniker": "D:\\lim\\source\\Solution1\\DirectoryService.Domain\\DirectoryService.Domain.csproj",
+              "RelativeDocumentMoniker": "DirectoryService.Domain\\DirectoryService.Domain.csproj",
+              "ToolTip": "D:\\lim\\source\\Solution1\\DirectoryService.Domain\\DirectoryService.Domain.csproj",
+              "RelativeToolTip": "DirectoryService.Domain\\DirectoryService.Domain.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-01-30T07:25:25.245Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
@@ -31,19 +48,19 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "DirectoryService.Domain.csproj",
-              "DocumentMoniker": "D:\\lim\\source\\Solution1\\DirectoryService.Domain\\DirectoryService.Domain.csproj",
-              "RelativeDocumentMoniker": "DirectoryService.Domain\\DirectoryService.Domain.csproj",
-              "ToolTip": "D:\\lim\\source\\Solution1\\DirectoryService.Domain\\DirectoryService.Domain.csproj",
-              "RelativeToolTip": "DirectoryService.Domain\\DirectoryService.Domain.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2026-01-30T07:25:25.245Z",
+              "Title": ".editorconfig",
+              "DocumentMoniker": "D:\\lim\\source\\Solution1\\DirectoryService.Domain\\.editorconfig",
+              "RelativeDocumentMoniker": "DirectoryService.Domain\\.editorconfig",
+              "ToolTip": "D:\\lim\\source\\Solution1\\DirectoryService.Domain\\.editorconfig",
+              "RelativeToolTip": "DirectoryService.Domain\\.editorconfig",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAABJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2026-01-30T07:26:13.118Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "Directory.Build.props",
               "DocumentMoniker": "D:\\lim\\source\\Solution1\\Directory.Build.props",
               "RelativeDocumentMoniker": "Directory.Build.props",
