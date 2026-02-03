@@ -3,3 +3,11 @@ D:\lim\source\Solution1\DirectoryService.Domain\obj\Debug\net10.0\DirectoryServi
 D:\lim\source\Solution1\DirectoryService.Domain\obj\Debug\net10.0\DirectoryService.Domain.AssemblyInfo.cs
 D:\lim\source\Solution1\DirectoryService.Domain\obj\Debug\net10.0\DirectoryService.Domain.csproj.CoreCompileInputs.cache
 D:\lim\source\Solution1\DirectoryService.Domain\obj\Debug\net10.0\DirectoryService.Domain.sourcelink.json
+D:\lim\source\Solution1\DirectoryService.Domain\bin\Debug\net10.0\DirectoryService.Domain.dll.config
+D:\lim\source\Solution1\DirectoryService.Domain\bin\Debug\net10.0\DirectoryService.Domain.deps.json
+D:\lim\source\Solution1\DirectoryService.Domain\bin\Debug\net10.0\DirectoryService.Domain.dll
+D:\lim\source\Solution1\DirectoryService.Domain\bin\Debug\net10.0\DirectoryService.Domain.pdb
+D:\lim\source\Solution1\DirectoryService.Domain\obj\Debug\net10.0\DirectoryService.Domain.dll
+D:\lim\source\Solution1\DirectoryService.Domain\obj\Debug\net10.0\refint\DirectoryService.Domain.dll
+D:\lim\source\Solution1\DirectoryService.Domain\obj\Debug\net10.0\DirectoryService.Domain.pdb
+D:\lim\source\Solution1\DirectoryService.Domain\obj\Debug\net10.0\ref\DirectoryService.Domain.dll

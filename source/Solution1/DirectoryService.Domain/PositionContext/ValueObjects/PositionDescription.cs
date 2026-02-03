@@ -1,23 +1,31 @@
 ﻿// Domain/PositionContext/ValueObjects/PositionDescription.cs
-namespace Domain.PositionContext.ValueObjects;
+namespace DirectoryService.Domain.PositionContext.ValueObjects;
 
-public record PositionDescription(string Value)
+public record PositionDescription
 {
-    private const int MaxLength = 500;
+	public string Value { get; }
 
-    public static PositionDescription Create(string description)
-    {
-        if (description == null)
-            return new PositionDescription(string.Empty);
+	private PositionDescription(string value)
+	{
+		Value = value;
+	}
 
-        if (description.Length > MaxLength)
-            throw new ArgumentException(
-                $"Description cannot exceed {MaxLength} characters",
-                nameof(description)
-            );
+	private const int MaxLength = 500;
 
-        return new PositionDescription(description.Trim());
-    }
+	public static PositionDescription Create(string description)
+	{
+		if (description == null)
+		{
+			return new PositionDescription(string.Empty);
+		}
 
-    public bool IsEmpty => string.IsNullOrEmpty(Value);
+		if (description.Length > MaxLength)
+		{
+			throw new ArgumentException($"Description cannot exceed {MaxLength} characters", nameof(description));
+		}
+
+		return new PositionDescription(description.Trim());
+	}
+
+	public bool IsEmpty => string.IsNullOrEmpty(Value);
 }

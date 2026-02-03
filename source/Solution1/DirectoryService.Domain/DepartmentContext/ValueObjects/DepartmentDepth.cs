@@ -1,17 +1,45 @@
 ﻿// Domain/DepartmentContext/ValueObjects/DepartmentDepth.cs
-namespace Domain.DepartmentContext.ValueObjects;
+namespace DirectoryService.Domain.DepartmentContext.ValueObjects;
 
-public record DepartmentDepth(short Value)
+/// <summary>
+/// Представляет глубину отдела в иерархической структуре.
+/// </summary>
+public record DepartmentDepth
 {
-    public static DepartmentDepth Create(short depth)
-    {
-        if (depth < 0)
-            throw new ArgumentException("Depth cannot be negative", nameof(depth));
+	public short Value { get; }
 
-        return new DepartmentDepth(depth);
-    }
+	private DepartmentDepth(short value)
+	{
+		Value = value;
+	}
 
-    public static DepartmentDepth Root => Create(0);
+	/// <summary>
+	/// Создает новый экземпляр <see cref="DepartmentDepth"/> с указанным значением глубины.
+	/// </summary>
+	/// <param name="depth">Значение глубины, должно быть неотрицательным.</param>
+	/// <returns>Новый экземпляр <see cref="DepartmentDepth"/>.</returns>
+	/// <exception cref="ArgumentException">Выбрасывается, если <paramref name="depth"/> отрицательный.</exception>
+	public static DepartmentDepth Create(short depth)
+	{
+		if (depth < 0)
+		{
+			throw new ArgumentException("Глубина не может быть отрицательной.", nameof(depth));
+		}
 
-    public DepartmentDepth Increment() => Create((short)(Value + 1));
+		return new DepartmentDepth(depth);
+	}
+
+	/// <summary>
+	/// Получает корневую глубину отдела, которая имеет значение 0.
+	/// </summary>
+	public static DepartmentDepth Root => Create(0);
+
+	/// <summary>
+	/// Увеличивает текущую глубину отдела на 1.
+	/// </summary>
+	/// <returns>Новый экземпляр <see cref="DepartmentDepth"/> с увеличенным значением.</returns>
+	public DepartmentDepth Increment()
+	{
+		return Create((short)(Value + 1));
+	}
 }

@@ -1,21 +1,29 @@
 ﻿// Domain/PositionContext/ValueObjects/PositionName.cs
-namespace Domain.PositionContext.ValueObjects;
+namespace DirectoryService.Domain.PositionContext.ValueObjects;
 
-public record PositionName(string Value)
+public record PositionName
 {
-    private const int MaxLength = 100;
+	private PositionName(string value)
+	{
+		Value = value;
+	}
 
-    public static PositionName Create(string name)
-    {
-        if (string.IsNullOrWhiteSpace(name))
-            throw new ArgumentException("Position name cannot be empty", nameof(name));
+	public string Value { get; }
 
-        if (name.Length > MaxLength)
-            throw new ArgumentException(
-                $"Position name cannot exceed {MaxLength} characters",
-                nameof(name)
-            );
+	private const int MaxLength = 100;
 
-        return new PositionName(name.Trim());
-    }
+	public static PositionName Create(string name)
+	{
+		if (string.IsNullOrWhiteSpace(name))
+		{
+			throw new ArgumentException("Position name cannot be empty", nameof(name));
+		}
+
+		if (name.Length > MaxLength)
+		{
+			throw new ArgumentException($"Position name cannot exceed {MaxLength} characters", nameof(name));
+		}
+
+		return new PositionName(name.Trim());
+	}
 }

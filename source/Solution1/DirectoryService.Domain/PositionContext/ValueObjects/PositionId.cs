@@ -1,17 +1,37 @@
 ﻿// Domain/PositionContext/ValueObjects/PositionId.cs
-namespace Domain.PositionContext.ValueObjects;
+namespace DirectoryService.Domain.PositionContext.ValueObjects;
 
-public record PositionId(Guid Value)
+public record PositionId
 {
-    public static PositionId Create() => new(Guid.NewGuid());
+	public Guid Value { get; }
 
-    public static PositionId From(Guid value)
-    {
-        if (value == Guid.Empty)
-            throw new ArgumentException("Position ID cannot be empty", nameof(value));
+	private PositionId(Guid value)
+	{
+		if (value == Guid.Empty)
+		{
+			throw new ArgumentException("Location ID cannot be empty.", nameof(value));
+		}
 
-        return new PositionId(value);
-    }
+		Value = value;
+	}
 
-    public override string ToString() => Value.ToString();
+	public static PositionId Create()
+	{
+		return new(Guid.NewGuid());
+	}
+
+	public static PositionId From(Guid value)
+	{
+		if (value == Guid.Empty)
+		{
+			throw new ArgumentException("Position ID cannot be empty", nameof(value));
+		}
+
+		return new PositionId(value);
+	}
+
+	public override string ToString()
+	{
+		return Value.ToString();
+	}
 }

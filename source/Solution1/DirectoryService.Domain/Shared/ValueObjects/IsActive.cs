@@ -1,9 +1,15 @@
 ﻿// Domain/Shared/ValueObjects/IsActive.cs
-namespace Domain.Shared.ValueObjects;
+namespace DirectoryService.Domain.Shared.ValueObjects;
 
 public record IsActive(bool Value)
 {
-    public static IsActive Create(bool value) => new(value);
+	public static IsActive Create(bool value)
+	{
+		return new(value);
+	}
 
-    public override string ToString() => Value ? "Active" : "Inactive";
+	public override string ToString()
+	{
+		return Value ? "Active" : "Inactive";
+	}
 }

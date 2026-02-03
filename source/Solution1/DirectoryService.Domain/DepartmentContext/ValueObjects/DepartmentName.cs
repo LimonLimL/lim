@@ -1,21 +1,44 @@
 ﻿// Domain/DepartmentContext/ValueObjects/DepartmentName.cs
-namespace Domain.DepartmentContext.ValueObjects;
+namespace DirectoryService.Domain.DepartmentContext.ValueObjects;
 
-public record DepartmentName(string Value)
+/// <summary>
+/// Представляет название отдела как значение (value object).
+/// Обеспечивает валидацию: не может быть пустым, null или превышать максимальную длину.
+/// </summary>
+public record DepartmentName
 {
-    private const int MaxLength = 100;
+	private DepartmentName(string value)
+	{
+		Value = value;
+	}
 
-    public static DepartmentName Create(string name)
-    {
-        if (string.IsNullOrWhiteSpace(name))
-            throw new ArgumentException("Department name cannot be empty", nameof(name));
+	/// <summary>
+	/// Значение названия отдела (строка, прошедшая валидацию).
+	/// </summary>
+	public string Value { get; }
+	private const int MaxLength = 100;
 
-        if (name.Length > MaxLength)
-            throw new ArgumentException(
-                $"Department name cannot exceed {MaxLength} characters",
-                nameof(name)
-            );
+	/// <summary>
+	/// Создаёт экземпляр <see cref="DepartmentName"/> из строки.
+	/// </summary>
+	/// <param name="name">Строковое значение названия отдела.</param>
+	/// <returns>Новый экземпляр <see cref="DepartmentName"/>.</returns>
+	/// <exception cref="ArgumentException">
+	/// Выбрасывается, если <paramref name="name"/> является null, пустой строкой, состоит только из пробелов
+	/// или превышает <see cref="MaxLength"/> символов.
+	/// </exception>
+	public static DepartmentName Create(string name)
+	{
+		if (string.IsNullOrWhiteSpace(name))
+		{
+			throw new ArgumentException("Department name cannot be empty", nameof(name));
+		}
 
-        return new DepartmentName(name.Trim());
-    }
+		if (name.Length > MaxLength)
+		{
+			throw new ArgumentException($"Department name cannot exceed {MaxLength} characters", nameof(name));
+		}
+
+		return new DepartmentName(name.Trim());
+	}
 }
