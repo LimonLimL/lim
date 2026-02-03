@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <RestoreSuccess Condition=" '$(RestoreSuccess)' == '' ">True</RestoreSuccess>
+    <RestoreTool Condition=" '$(RestoreTool)' == '' ">NuGet</RestoreTool>
+    <ProjectAssetsFile Condition=" '$(ProjectAssetsFile)' == '' ">$(MSBuildThisFileDirectory)project.assets.json</ProjectAssetsFile>
+    <NuGetPackageRoot Condition=" '$(NuGetPackageRoot)' == '' ">$(UserProfile)\.nuget\packages\</NuGetPackageRoot>
+    <NuGetPackageFolders Condition=" '$(NuGetPackageFolders)' == '' ">C:\Users\stud\.nuget\packages\;C:\Program Files (x86)\Microsoft Visual Studio\Shared\NuGetPackages</NuGetPackageFolders>
+    <NuGetProjectStyle Condition=" '$(NuGetProjectStyle)' == '' ">PackageReference</NuGetProjectStyle>
+    <NuGetToolVersion Condition=" '$(NuGetToolVersion)' == '' ">7.0.0</NuGetToolVersion>
+  </PropertyGroup>
+  <ItemGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <SourceRoot Include="C:\Users\stud\.nuget\packages\" />
+    <SourceRoot Include="C:\Program Files (x86)\Microsoft Visual Studio\Shared\NuGetPackages\" />
+  </ItemGroup>
+  <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <Import Project="$(NuGetPackageRoot)microsoft.codeanalysis.analyzers\4.14.0\buildTransitive\Microsoft.CodeAnalysis.Analyzers.props" Condition="Exists('$(NuGetPackageRoot)microsoft.codeanalysis.analyzers\4.14.0\buildTransitive\Microsoft.CodeAnalysis.Analyzers.props')" />
+  </ImportGroup>
+  <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <PkgRoslynator_Refactorings Condition=" '$(PkgRoslynator_Refactorings)' == '' ">C:\Users\stud\.nuget\packages\roslynator.refactorings\4.15.0</PkgRoslynator_Refactorings>
+    <PkgRoslynator_CodeFixes Condition=" '$(PkgRoslynator_CodeFixes)' == '' ">C:\Users\stud\.nuget\packages\roslynator.codefixes\4.15.0</PkgRoslynator_CodeFixes>
+    <PkgRoslynator_CodeAnalysis_Analyzers Condition=" '$(PkgRoslynator_CodeAnalysis_Analyzers)' == '' ">C:\Users\stud\.nuget\packages\roslynator.codeanalysis.analyzers\4.15.0</PkgRoslynator_CodeAnalysis_Analyzers>
+    <PkgRoslynator_Analyzers Condition=" '$(PkgRoslynator_Analyzers)' == '' ">C:\Users\stud\.nuget\packages\roslynator.analyzers\4.15.0</PkgRoslynator_Analyzers>
+    <PkgNewStyleCop_Analyzers Condition=" '$(PkgNewStyleCop_Analyzers)' == '' ">C:\Users\stud\.nuget\packages\newstylecop.analyzers\1.2.1</PkgNewStyleCop_Analyzers>
+    <PkgMicrosoft_CodeAnalysis_NetAnalyzers Condition=" '$(PkgMicrosoft_CodeAnalysis_NetAnalyzers)' == '' ">C:\Users\stud\.nuget\packages\microsoft.codeanalysis.netanalyzers\10.0.102</PkgMicrosoft_CodeAnalysis_NetAnalyzers>
+    <PkgMicrosoft_CodeAnalysis_Analyzers Condition=" '$(PkgMicrosoft_CodeAnalysis_Analyzers)' == '' ">C:\Users\stud\.nuget\packages\microsoft.codeanalysis.analyzers\4.14.0</PkgMicrosoft_CodeAnalysis_Analyzers>
+    <PkgErrorProne_NET_CoreAnalyzers Condition=" '$(PkgErrorProne_NET_CoreAnalyzers)' == '' ">C:\Users\stud\.nuget\packages\errorprone.net.coreanalyzers\0.1.2</PkgErrorProne_NET_CoreAnalyzers>
+    <PkgAsyncFixer Condition=" '$(PkgAsyncFixer)' == '' ">C:\Users\stud\.nuget\packages\asyncfixer\2.1.0</PkgAsyncFixer>
+  </PropertyGroup>
+</Project>

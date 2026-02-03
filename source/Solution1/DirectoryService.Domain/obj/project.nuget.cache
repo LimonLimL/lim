@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "R52WAf7b3yk=",
+  "success": true,
+  "projectFilePath": "D:\\lim\\source\\Solution1\\DirectoryService.Domain\\DirectoryService.Domain.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\stud\\.nuget\\packages\\microsoft.codeanalysis.netanalyzers\\10.0.102\\microsoft.codeanalysis.netanalyzers.10.0.102.nupkg.sha512",
+    "C:\\Users\\stud\\.nuget\\packages\\roslynator.refactorings\\4.15.0\\roslynator.refactorings.4.15.0.nupkg.sha512"
+  ],
+  "logs": []
+}
