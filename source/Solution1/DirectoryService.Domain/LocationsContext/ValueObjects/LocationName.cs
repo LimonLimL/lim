@@ -1,4 +1,6 @@
-﻿namespace DirectoryService.Domain.LocationsContext.ValueObjects;
+﻿using System.Xml.Linq;
+
+namespace DirectoryService.Domain.LocationsContext.ValueObjects;
 
 public class LocationName
 {

@@ -1,91 +1,11 @@
 {
   "version": 3,
   "targets": {
-    "net10.0": {
-      "Microsoft.CodeAnalysis.NetAnalyzers/10.0.102": {
-        "type": "package"
-      },
-      "Roslynator.Refactorings/4.15.0": {
-        "type": "package"
-      }
-    }
+    "net10.0": {}
   },
-  "libraries": {
-    "Microsoft.CodeAnalysis.NetAnalyzers/10.0.102": {
-      "sha512": "4toG7NN4bwoIt5KAUJd8vhJQt5vwaLTBWdDOSeyaAAQP1wXLIkVshsMtKMIrPGpm0w+pHFpX7ffWqdB6ZAinoQ==",
-      "type": "package",
-      "path": "microsoft.codeanalysis.netanalyzers/10.0.102",
-      "hasTools": true,
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "Icon.png",
-        "ThirdPartyNotices.txt",
-        "analyzers/dotnet/Microsoft.CodeAnalysis.NetAnalyzers.dll",
-        "analyzers/dotnet/Microsoft.CodeAnalysis.NetAnalyzers.xml",
-        "analyzers/dotnet/cs/Microsoft.CodeAnalysis.CSharp.NetAnalyzers.dll",
-        "analyzers/dotnet/cs/Microsoft.CodeAnalysis.CSharp.NetAnalyzers.xml",
-        "analyzers/dotnet/cs/Microsoft.CodeAnalysis.NetAnalyzers.resources.dll",
-        "analyzers/dotnet/de/Microsoft.CodeAnalysis.NetAnalyzers.resources.dll",
-        "analyzers/dotnet/es/Microsoft.CodeAnalysis.NetAnalyzers.resources.dll",
-        "analyzers/dotnet/fr/Microsoft.CodeAnalysis.NetAnalyzers.resources.dll",
-        "analyzers/dotnet/it/Microsoft.CodeAnalysis.NetAnalyzers.resources.dll",
-        "analyzers/dotnet/ja/Microsoft.CodeAnalysis.NetAnalyzers.resources.dll",
-        "analyzers/dotnet/ko/Microsoft.CodeAnalysis.NetAnalyzers.resources.dll",
-        "analyzers/dotnet/pl/Microsoft.CodeAnalysis.NetAnalyzers.resources.dll",
-        "analyzers/dotnet/pt-BR/Microsoft.CodeAnalysis.NetAnalyzers.resources.dll",
-        "analyzers/dotnet/ru/Microsoft.CodeAnalysis.NetAnalyzers.resources.dll",
-        "analyzers/dotnet/tr/Microsoft.CodeAnalysis.NetAnalyzers.resources.dll",
-        "analyzers/dotnet/vb/Microsoft.CodeAnalysis.VisualBasic.NetAnalyzers.dll",
-        "analyzers/dotnet/vb/Microsoft.CodeAnalysis.VisualBasic.NetAnalyzers.xml",
-        "analyzers/dotnet/zh-Hans/Microsoft.CodeAnalysis.NetAnalyzers.resources.dll",
-        "analyzers/dotnet/zh-Hant/Microsoft.CodeAnalysis.NetAnalyzers.resources.dll",
-        "documentation/Analyzer Configuration.md",
-        "documentation/Microsoft.CodeAnalysis.NetAnalyzers.md",
-        "documentation/Microsoft.CodeAnalysis.NetAnalyzers.sarif",
-        "documentation/README.md",
-        "microsoft.codeanalysis.netanalyzers.10.0.102.nupkg.sha512",
-        "microsoft.codeanalysis.netanalyzers.nuspec",
-        "tools/install.ps1",
-        "tools/uninstall.ps1"
-      ]
-    },
-    "Roslynator.Refactorings/4.15.0": {
-      "sha512": "ksGRAJcXQiYeq/aKsuV63HxHE08mlshoMQqLSwSOqDnh4KhyOIeI/qv777udSuFJU3KLbHxwW9lrxgqHl9jfxQ==",
-      "type": "package",
-      "path": "roslynator.refactorings/4.15.0",
-      "hasTools": true,
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "analyzers/dotnet/roslyn3.8/cs/Roslynator.CSharp.Refactorings.dll",
-        "analyzers/dotnet/roslyn3.8/cs/Roslynator_Refactorings_Roslynator.CSharp.Workspaces.dll",
-        "analyzers/dotnet/roslyn3.8/cs/Roslynator_Refactorings_Roslynator.CSharp.dll",
-        "analyzers/dotnet/roslyn3.8/cs/Roslynator_Refactorings_Roslynator.Common.dll",
-        "analyzers/dotnet/roslyn3.8/cs/Roslynator_Refactorings_Roslynator.Core.dll",
-        "analyzers/dotnet/roslyn3.8/cs/Roslynator_Refactorings_Roslynator.Workspaces.Common.dll",
-        "analyzers/dotnet/roslyn3.8/cs/Roslynator_Refactorings_Roslynator.Workspaces.Core.dll",
-        "analyzers/dotnet/roslyn4.7/cs/Roslynator.CSharp.Refactorings.dll",
-        "analyzers/dotnet/roslyn4.7/cs/Roslynator_Refactorings_Roslynator.CSharp.Workspaces.dll",
-        "analyzers/dotnet/roslyn4.7/cs/Roslynator_Refactorings_Roslynator.CSharp.dll",
-        "analyzers/dotnet/roslyn4.7/cs/Roslynator_Refactorings_Roslynator.Common.dll",
-        "analyzers/dotnet/roslyn4.7/cs/Roslynator_Refactorings_Roslynator.Core.dll",
-        "analyzers/dotnet/roslyn4.7/cs/Roslynator_Refactorings_Roslynator.Workspaces.Common.dll",
-        "analyzers/dotnet/roslyn4.7/cs/Roslynator_Refactorings_Roslynator.Workspaces.Core.dll",
-        "docs/README.md",
-        "icon.png",
-        "roslynator.refactorings.4.15.0.nupkg.sha512",
-        "roslynator.refactorings.nuspec",
-        "tools/install.ps1",
-        "tools/uninstall.ps1"
-      ]
-    }
-  },
+  "libraries": {},
   "projectFileDependencyGroups": {
-    "net10.0": [
-      "Microsoft.CodeAnalysis.NetAnalyzers >= 10.0.102",
-      "Roslynator.Refactorings >= 4.15.0"
-    ]
+    "net10.0": []
   },
   "packageFolders": {
     "C:\\Users\\stud\\.nuget\\packages\\": {},
@@ -122,7 +42,6 @@
         }
       },
       "warningProperties": {
-        "allWarningsAsErrors": true,
         "warnAsError": [
           "NU1605"
         ]
@@ -137,20 +56,6 @@
     "frameworks": {
       "net10.0": {
         "targetAlias": "net10.0",
-        "dependencies": {
-          "Microsoft.CodeAnalysis.NetAnalyzers": {
-            "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
-            "suppressParent": "All",
-            "target": "Package",
-            "version": "[10.0.102, )"
-          },
-          "Roslynator.Refactorings": {
-            "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
-            "suppressParent": "All",
-            "target": "Package",
-            "version": "[4.15.0, )"
-          }
-        },
         "imports": [
           "net461",
           "net462",

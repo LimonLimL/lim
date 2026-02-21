@@ -1,4 +1,4 @@
-﻿namespace DirectoryService.Domain.LocationsContext.ValueObjects;
+﻿namespace DirectoryService.Domain.Shared.ValueObjects;
 
 /// <summary>
 /// Значимый объект, представляющий IANA-идентификатор часового пояса (например, "Europe/Moscow").

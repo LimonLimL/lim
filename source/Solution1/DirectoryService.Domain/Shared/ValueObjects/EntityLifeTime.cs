@@ -1,4 +1,4 @@
-﻿namespace DirectoryService.Domain.LocationsContext.ValueObjects;
+﻿namespace DirectoryService.Domain.Shared.ValueObjects;
 
 /// <summary>
 /// Значимый объект, представляющий временные метки жизненного цикла сущности (например, даты создания, обновления и флаг активности).
@@ -26,6 +26,12 @@ public sealed class EntityLifeTime
 		CreatedAt = createdAt;
 		UpdatedAt = updatedAt;
 		IsActivate = isActivate;
+	}
+
+	public EntityLifeTime Update()
+	{
+		DateTime UTC = DateTime.UtcNow;
+		return new EntityLifeTime(CreatedAt, UTC, IsActivate);
 	}
 
 	/// <summary>

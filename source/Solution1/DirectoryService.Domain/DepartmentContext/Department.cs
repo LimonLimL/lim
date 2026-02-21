@@ -1,7 +1,11 @@
 ﻿// Domain/DepartmentContext/Department.cs
 
 // Domain/DepartmentContext/Department.cs
+using System.Xml.Linq;
 using DirectoryService.Domain.DepartmentContext.ValueObjects;
+using DirectoryService.Domain.LocationsContext.ValueObjects;
+using DirectoryService.Domain.PositionContext.ValueObjects;
+using DirectoryService.Domain.Shared.ValueObjects;
 
 namespace DirectoryService.Domain.DepartmentContext;
 
@@ -47,6 +51,30 @@ public class Department
 	/// </summary>
 	public bool IsActive { get; private set; }
 
+	List<LocInDep> locInDeps = [];
+
+	List<PosInDep> posInDeps = [];
+
+	public void AddLoc(LocInDep locInDep)
+	{
+		foreach (LocInDep dep in locInDeps)
+		{
+			if (locInDep.LocationId == locInDep.LocationId)
+				throw new InvalidOperationException($"ID не может повторяться внутри подразделения");
+		}
+		locInDeps.Add(locInDep);
+	}
+
+	public void AddPos(PosInDep posInDep)
+	{
+		foreach (PosInDep dep in posInDeps)
+		{
+			if (posInDep.PositionId == posInDep.PositionId)
+				throw new InvalidOperationException($"Должность не может повторяться внутри подразделения");
+		}
+		posInDeps.Add(posInDep);
+	}
+
 	/// <summary>
 	/// Внутренний конструктор для создания экземпляра отдела.
 	/// Используется только фабричными методами.
@@ -85,9 +113,14 @@ public class Department
 	/// <param name="identifier">Текстовый идентификатор корневого отдела.</param>
 	/// <param name="isActive">Активность отдела (по умолчанию — true).</param>
 	/// <returns>Новый экземпляр <see cref="Department"/>.</returns>
-	public static Department CreateRoot(DepartmentName name, DepartmentIdentifier identifier, bool isActive = true)
+	public static Department CreateRoot(
+		DepartmentName name,
+		DepartmentIdentifier identifier,
+		DepVerification depVerification,
+		bool isActive = true
+	)
 	{
-		return new Department(
+		Department Tocheck = new Department(
 			DepartmentId.Create(),
 			name,
 			identifier,
@@ -96,6 +129,10 @@ public class Department
 			DepartmentDepth.Create(0),
 			isActive
 		);
+		bool DepVer = depVerification.СheckUniqueness(Tocheck);
+		if (DepVer == false)
+			throw new InvalidOperationException($"{name} уже существует");
+		return Tocheck;
 	}
 
 	/// <summary>
