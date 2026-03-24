@@ -1,5 +1,4 @@
-﻿// Domain/Shared/ValueObjects/IsActive.cs
-namespace DirectoryService.Domain.Shared.ValueObjects;
+﻿namespace DirectoryService.Domain.Shared.ValueObjects;
 
 public record IsActive(bool Value)
 {

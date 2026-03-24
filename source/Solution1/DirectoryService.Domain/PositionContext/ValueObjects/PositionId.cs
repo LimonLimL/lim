@@ -1,5 +1,4 @@
-﻿// Domain/PositionContext/ValueObjects/PositionId.cs
-namespace DirectoryService.Domain.PositionContext.ValueObjects;
+﻿namespace DirectoryService.Domain.PositionContext.ValueObjects;
 
 public record PositionId
 {

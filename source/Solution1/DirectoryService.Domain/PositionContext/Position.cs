@@ -1,5 +1,4 @@
-﻿// Domain/PositionContext/Position.cs
-using DirectoryService.Domain.LocationsContext.ValueObjects;
+﻿using DirectoryService.Domain.LocationsContext.ValueObjects;
 using DirectoryService.Domain.PositionContext.ValueObjects;
 using DirectoryService.Domain.Shared.ValueObjects;
 
