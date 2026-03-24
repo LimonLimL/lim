@@ -13,8 +13,4 @@
     <SourceRoot Include="C:\Users\stud\.nuget\packages\" />
     <SourceRoot Include="C:\Program Files (x86)\Microsoft Visual Studio\Shared\NuGetPackages\" />
   </ItemGroup>
-  <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
-    <PkgRoslynator_Refactorings Condition=" '$(PkgRoslynator_Refactorings)' == '' ">C:\Users\stud\.nuget\packages\roslynator.refactorings\4.15.0</PkgRoslynator_Refactorings>
-    <PkgMicrosoft_CodeAnalysis_NetAnalyzers Condition=" '$(PkgMicrosoft_CodeAnalysis_NetAnalyzers)' == '' ">C:\Users\stud\.nuget\packages\microsoft.codeanalysis.netanalyzers\10.0.102</PkgMicrosoft_CodeAnalysis_NetAnalyzers>
-  </PropertyGroup>
 </Project>

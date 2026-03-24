@@ -1,9 +1,27 @@
-﻿using DirectoryService.Domain.LocationsContext.ValueObjects;
+﻿using System.Xml.Linq;
+using DirectoryService.Domain.LocationsContext.ValueObjects;
+using DirectoryService.Domain.Shared.ValueObjects;
 
 namespace DirectoryService.Domain.LocationsContext;
 
 public class Location
 {
+	public void Rename(LocationName other)
+	{
+		if (LifeTime.IsActivate == false)
+			throw new InvalidOperationException("Сущнность архивированна");
+		Name = other;
+		LifeTime = LifeTime.Update();
+	}
+
+	public void Retime(IanaTimeZone other)
+	{
+		if (LifeTime.IsActivate == false)
+			throw new InvalidOperationException("Сущнность архивированна");
+		TimeZone = other;
+		LifeTime = LifeTime.Update();
+	}
+
 	public Location(
 		LocationId id,
 		LocationAddress address,
@@ -20,10 +38,10 @@ public class Location
 	}
 
 	public LocationId Id { get; }
-	public LocationName Name { get; }
+	public LocationName Name { get; set; }
 	public LocationAddress Address { get; }
-	public EntityLifeTime LifeTime { get; }
-	public IanaTimeZone TimeZone { get; }
+	public EntityLifeTime LifeTime { get; set; }
+	public IanaTimeZone TimeZone { get; set; }
 
 	public static Location Create(
 		Guid id,

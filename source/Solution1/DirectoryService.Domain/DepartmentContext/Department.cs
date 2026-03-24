@@ -1,71 +1,31 @@
-﻿// Domain/DepartmentContext/Department.cs
-
-// Domain/DepartmentContext/Department.cs
+﻿using System.Xml.Linq;
 using DirectoryService.Domain.DepartmentContext.ValueObjects;
+using DirectoryService.Domain.LocationsContext.ValueObjects;
+using DirectoryService.Domain.PositionContext.ValueObjects;
+using DirectoryService.Domain.Shared.ValueObjects;
 
 namespace DirectoryService.Domain.DepartmentContext;
 
-/// <summary>
-/// Сущность отдела в домене.
-/// Содержит идентификатор, название, идентификатор родителя, путь, глубину, статус активности и временные метки.
-/// Обеспечивает инварианты через фабричные методы: корень и дочерние отделы создаются с соблюдением иерархии.
-/// </summary>
 public class Department
 {
-	/// <summary>
-	/// Идентификатор отдела.
-	/// </summary>
 	public DepartmentId Id { get; private set; }
-
-	/// <summary>
-	/// Название отдела.
-	/// </summary>
 	public DepartmentName Name { get; private set; }
-
-	/// <summary>
-	/// Уникальный текстовый идентификатор отдела (slug).
-	/// </summary>
 	public DepartmentIdentifier Identifier { get; private set; }
-
-	/// <summary>
-	/// Идентификатор родительского отдела (может быть null для корня).
-	/// </summary>
 	public DepartmentId? ParentId { get; private set; }
-
-	/// <summary>
-	/// Путь к отделу в иерархии (например, "it/hr").
-	/// </summary>
 	public DepartmentPath Path { get; private set; }
-
-	/// <summary>
-	/// Глубина отдела в дереве (0 — корень, 1 — дочерний и т.д.).
-	/// </summary>
-	public DepartmentDepth Depth { get; private set; }
-
-	/// <summary>
-	/// Признак активности отдела.
-	/// </summary>
+	public HierarchyLevel Level { get; private set; }
 	public bool IsActive { get; private set; }
 
-	/// <summary>
-	/// Внутренний конструктор для создания экземпляра отдела.
-	/// Используется только фабричными методами.
-	/// </summary>
-	/// <param name="id">Идентификатор отдела.</param>
-	/// <param name="name">Название отдела.</param>
-	/// <param name="identifier">Текстовый идентификатор.</param>
-	/// <param name="parentId">Идентификатор родителя (null для корня).</param>
-	/// <param name="path">Путь в иерархии.</param>
-	/// <param name="depth">Глубина в дереве.</param>
-	/// <param name="isActive">Активность отдела.</param>
-	/// <param name="lifeTime">Временные метки.</param>
+	private List<LocInDep> _locInDeps = new();
+	private List<PosInDep> _posInDeps = new();
+
 	private Department(
 		DepartmentId id,
 		DepartmentName name,
 		DepartmentIdentifier identifier,
 		DepartmentId? parentId,
 		DepartmentPath path,
-		DepartmentDepth depth,
+		HierarchyLevel level,
 		bool isActive
 	)
 	{
@@ -74,42 +34,46 @@ public class Department
 		Identifier = identifier;
 		ParentId = parentId;
 		Path = path;
-		Depth = depth;
+		Level = level;
 		IsActive = isActive;
 	}
 
-	/// <summary>
-	/// Создаёт корневой отдел (без родителя).
-	/// </summary>
-	/// <param name="name">Название корневого отдела.</param>
-	/// <param name="identifier">Текстовый идентификатор корневого отдела.</param>
-	/// <param name="isActive">Активность отдела (по умолчанию — true).</param>
-	/// <returns>Новый экземпляр <see cref="Department"/>.</returns>
-	public static Department CreateRoot(DepartmentName name, DepartmentIdentifier identifier, bool isActive = true)
+	public static Department CreateRoot(DepartmentName name)
 	{
-		return new Department(
+		return CreateRoot(
+			name,
+			DepartmentIdentifier.Create(name.Value),
+			new DepVerification(new List<Department>()),
+			true
+		);
+	}
+
+	public static Department CreateRoot(
+		DepartmentName name,
+		DepartmentIdentifier identifier,
+		DepVerification depVerification,
+		bool isActive = true
+	)
+	{
+		var department = new Department(
 			DepartmentId.Create(),
 			name,
 			identifier,
 			null,
-			DepartmentPath.CreateRoot(),
-			DepartmentDepth.Create(0),
+			DepartmentPath.CreateRoot(name.Value),
+			HierarchyLevel.Create(1),
 			isActive
 		);
+
+		bool depVer = depVerification.CheckUniqueness(department);
+		if (!depVer)
+		{
+			throw new InvalidOperationException($"{name} уже существует");
+		}
+
+		return department;
 	}
 
-	/// <summary>
-	/// Создаёт дочерний отдел под указанным родителем.
-	/// Автоматически вычисляет путь и глубину.
-	/// </summary>
-	/// <param name="name">Название дочернего отдела.</param>
-	/// <param name="identifier">Текстовый идентификатор дочернего отдела.</param>
-	/// <param name="parent">Родительский отдел (не может быть null).</param>
-	/// <param name="isActive">Активность отдела (по умолчанию — true).</param>
-	/// <returns>Новый экземпляр <see cref="Department"/>.</returns>
-	/// <exception cref="ArgumentNullException">
-	/// Выбрасывается, если <paramref name="parent"/> равен null.
-	/// </exception>
 	public static Department CreateChild(
 		DepartmentName name,
 		DepartmentIdentifier identifier,
@@ -117,33 +81,84 @@ public class Department
 		bool isActive = true
 	)
 	{
-		if (parent is null)
-		{
-			ArgumentNullException.ThrowIfNull(parent);
-		}
+		ArgumentNullException.ThrowIfNull(parent);
 
-		return new Department(
-			DepartmentId.Create(),
-			name,
-			identifier,
-			parent.Id,
-			DepartmentPath.Create(parent.Path, identifier),
-			parent.Depth.Increment(), // ← Предполагаем, что DepartmentDepth имеет метод Increment()
-			isActive
-		);
+		var path = DepartmentPath.Create($"{parent.Path.Value}.{name.Value}");
+		var level = HierarchyLevel.Create(parent.Level.Value + 1);
+
+		return new Department(DepartmentId.Create(), name, identifier, parent.Id, path, level, isActive);
 	}
 
-	/// <summary>
-	/// Обновляет данные отдела (название, идентификатор, активность).
-	/// Изменение иерархии (ParentId, Path, Depth) требует отдельной логики перемещения в дереве.
-	/// </summary>
-	/// <param name="name">Новое название.</param>
-	/// <param name="identifier">Новый текстовый идентификатор.</param>
-	/// <param name="isActive">Новый статус активности.</param>
+	public void ConnectDepartment(Department department)
+	{
+		if (IsSameDepartment(department))
+		{
+			throw new InvalidOperationException("Подразделение не может быть родителем самого себя.");
+		}
+
+		if (IsDescendantOf(department))
+		{
+			throw new InvalidOperationException("Подразделение не может быть привязано к своему потомку.");
+		}
+
+		department.ParentId = Id;
+		department.Path = CreateHierarchicalPath(department);
+		department.Level = CalculateHierarchyLevel(department);
+	}
+
+	private DepartmentPath CreateHierarchicalPath(Department department)
+	{
+		const char separator = '.';
+		string[] names = [Name.Value, department.Name.Value];
+		string joinedName = string.Join(separator, names);
+		return DepartmentPath.Create(joinedName);
+	}
+
+	private HierarchyLevel CalculateHierarchyLevel(Department department)
+	{
+		const char separator = '.';
+		string[] names = department.Path.Value.Split(separator);
+		return HierarchyLevel.Create(names.Length);
+	}
+
+	private bool IsSameDepartment(Department department)
+	{
+		return Id == department.Id;
+	}
+
+	private bool IsDescendantOf(Department department)
+	{
+		if (department.ParentId == null)
+		{
+			return false;
+		}
+		return department.ParentId == Id;
+	}
+
 	public void Update(DepartmentName name, DepartmentIdentifier identifier, bool isActive)
 	{
 		Name = name;
 		Identifier = identifier;
 		IsActive = isActive;
+	}
+
+	public void AddLoc(LocInDep locInDep)
+	{
+		foreach (var dep in _locInDeps)
+		{
+			if (dep.LocationId == locInDep.LocationId)
+				throw new InvalidOperationException("ID не может повторяться внутри подразделения");
+		}
+		_locInDeps.Add(locInDep);
+	}
+
+	public void AddPos(PosInDep posInDep)
+	{
+		foreach (var dep in _posInDeps)
+		{
+			if (dep.PositionId == posInDep.PositionId)
+				throw new InvalidOperationException("Должность не может повторяться внутри подразделения");
+		}
+		_posInDeps.Add(posInDep);
 	}
 }
