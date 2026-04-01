@@ -1,5 +1,5 @@
-﻿using DirectoryService.Domain.DepartmentContext;
-using DirectoryService.Domain.DepartmentContext.ValueObjects;
+﻿using DirectoryService.Domain.DepartmentContext.ValueObjects;
+using DirectoryService.Domain.DepartmentContexts;
 using DirectoryService.Domain.PositionContext;
 using DirectoryService.Domain.PositionContext.ValueObjects;
 
