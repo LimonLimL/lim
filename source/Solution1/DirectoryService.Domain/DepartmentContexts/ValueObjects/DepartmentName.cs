@@ -2,7 +2,7 @@
 
 public record DepartmentName
 {
-	private DepartmentName(string value)
+	public DepartmentName(string value)
 	{
 		Value = value;
 	}

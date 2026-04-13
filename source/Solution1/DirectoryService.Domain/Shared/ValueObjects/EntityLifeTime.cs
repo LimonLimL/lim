@@ -38,4 +38,10 @@ public sealed class EntityLifeTime
 
 		return new EntityLifeTime(createdAt, updatedAt, isActivate);
 	}
+
+	internal static EntityLifeTime CreateNew()
+	{
+		DateTime now = DateTime.UtcNow;
+		return new EntityLifeTime(now, now, true);
+	}
 }

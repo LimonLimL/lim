@@ -20,9 +20,4 @@
   <ItemGroup>
     <Using Include="Xunit" />
   </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="LocationContextsTests\" />
-    <Folder Include="PositionContextsTests\" />
-  </ItemGroup>
 </Project>

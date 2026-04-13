@@ -7,6 +7,11 @@ namespace DirectoryService.Domain.Shared.ValueObjects
 {
 	public sealed class LocInDep
 	{
+		public LocInDep(LocationId locationId)
+		{
+			LocationId = locationId;
+		}
+
 		public LocInDep(Location location, Department department)
 		{
 			Location = location;
@@ -16,8 +21,8 @@ namespace DirectoryService.Domain.Shared.ValueObjects
 		}
 
 		public LocationId LocationId { get; }
-		public Location Location { get; }
-		public DepartmentId DepartmentId { get; }
-		public Department Department { get; }
+		public Location? Location { get; }
+		public DepartmentId? DepartmentId { get; }
+		public Department? Department { get; }
 	}
 }

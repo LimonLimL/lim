@@ -3,28 +3,20 @@
   "WorkspaceRootPath": "D:\\lim\\source\\Solution1\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{FE24D343-E063-4C92-8BAB-E3BD6048444D}|TestProjectlim\\TestProjectlim.csproj|d:\\lim\\source\\solution1\\testprojectlim\\departmentcontextstests\\depverificationtests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FE24D343-E063-4C92-8BAB-E3BD6048444D}|TestProjectlim\\TestProjectlim.csproj|solutionrelative:testprojectlim\\departmentcontextstests\\depverificationtests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{37661DD9-DC0E-4953-A651-1E1C101DE3C2}|WebApplication1\\WebApplication1.csproj|d:\\lim\\source\\solution1\\webapplication1\\inmemorystorage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{37661DD9-DC0E-4953-A651-1E1C101DE3C2}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\inmemorystorage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7D3A5845-5B0B-4E79-8310-ACAF95458DF3}|DirectoryService.Domain\\DirectoryService.Domain.csproj|d:\\lim\\source\\solution1\\directoryservice.domain\\departmentcontexts\\valueobjects\\departmentidentifier.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7D3A5845-5B0B-4E79-8310-ACAF95458DF3}|DirectoryService.Domain\\DirectoryService.Domain.csproj|solutionrelative:directoryservice.domain\\departmentcontexts\\valueobjects\\departmentidentifier.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{37661DD9-DC0E-4953-A651-1E1C101DE3C2}|WebApplication1\\WebApplication1.csproj|d:\\lim\\source\\solution1\\webapplication1\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{37661DD9-DC0E-4953-A651-1E1C101DE3C2}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7D3A5845-5B0B-4E79-8310-ACAF95458DF3}|DirectoryService.Domain\\DirectoryService.Domain.csproj|d:\\lim\\source\\solution1\\directoryservice.domain\\departmentcontexts\\valueobjects\\depverification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7D3A5845-5B0B-4E79-8310-ACAF95458DF3}|DirectoryService.Domain\\DirectoryService.Domain.csproj|solutionrelative:directoryservice.domain\\departmentcontexts\\valueobjects\\depverification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{37661DD9-DC0E-4953-A651-1E1C101DE3C2}|WebApplication1\\WebApplication1.csproj|d:\\lim\\source\\solution1\\webapplication1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{37661DD9-DC0E-4953-A651-1E1C101DE3C2}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7D3A5845-5B0B-4E79-8310-ACAF95458DF3}|DirectoryService.Domain\\DirectoryService.Domain.csproj|d:\\lim\\source\\solution1\\directoryservice.domain\\departmentcontexts\\department.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7D3A5845-5B0B-4E79-8310-ACAF95458DF3}|DirectoryService.Domain\\DirectoryService.Domain.csproj|solutionrelative:directoryservice.domain\\departmentcontexts\\department.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7D3A5845-5B0B-4E79-8310-ACAF95458DF3}|DirectoryService.Domain\\DirectoryService.Domain.csproj|d:\\lim\\source\\solution1\\directoryservice.domain\\departmentcontexts\\valueobjects\\departmentpath.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7D3A5845-5B0B-4E79-8310-ACAF95458DF3}|DirectoryService.Domain\\DirectoryService.Domain.csproj|solutionrelative:directoryservice.domain\\departmentcontexts\\valueobjects\\departmentpath.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7D3A5845-5B0B-4E79-8310-ACAF95458DF3}|DirectoryService.Domain\\DirectoryService.Domain.csproj|d:\\lim\\source\\solution1\\directoryservice.domain\\departmentcontexts\\valueobjects\\departmentid.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7D3A5845-5B0B-4E79-8310-ACAF95458DF3}|DirectoryService.Domain\\DirectoryService.Domain.csproj|solutionrelative:directoryservice.domain\\departmentcontexts\\valueobjects\\departmentid.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{37661DD9-DC0E-4953-A651-1E1C101DE3C2}|WebApplication1\\WebApplication1.csproj|d:\\lim\\source\\solution1\\webapplication1\\webapplication1.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{37661DD9-DC0E-4953-A651-1E1C101DE3C2}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\webapplication1.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,7 +26,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -46,81 +38,54 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "DepartmentIdentifier.cs",
-              "DocumentMoniker": "D:\\lim\\source\\Solution1\\DirectoryService.Domain\\DepartmentContexts\\ValueObjects\\DepartmentIdentifier.cs",
-              "RelativeDocumentMoniker": "DirectoryService.Domain\\DepartmentContexts\\ValueObjects\\DepartmentIdentifier.cs",
-              "ToolTip": "D:\\lim\\source\\Solution1\\DirectoryService.Domain\\DepartmentContexts\\ValueObjects\\DepartmentIdentifier.cs",
-              "RelativeToolTip": "DirectoryService.Domain\\DepartmentContexts\\ValueObjects\\DepartmentIdentifier.cs",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAQwCEAAAAFAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "InMemoryStorage.cs",
+              "DocumentMoniker": "D:\\lim\\source\\Solution1\\WebApplication1\\InMemoryStorage.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\InMemoryStorage.cs",
+              "ToolTip": "D:\\lim\\source\\Solution1\\WebApplication1\\InMemoryStorage.cs",
+              "RelativeToolTip": "WebApplication1\\InMemoryStorage.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGkAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-01T07:45:51.793Z",
+              "WhenOpened": "2026-04-13T04:15:05.056Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "D:\\lim\\source\\Solution1\\WebApplication1\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "WebApplication1\\Properties\\launchSettings.json",
+              "ToolTip": "D:\\lim\\source\\Solution1\\WebApplication1\\Properties\\launchSettings.json",
+              "RelativeToolTip": "WebApplication1\\Properties\\launchSettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-04-13T02:04:43.442Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "DepVerification.cs",
-              "DocumentMoniker": "D:\\lim\\source\\Solution1\\DirectoryService.Domain\\DepartmentContexts\\ValueObjects\\DepVerification.cs",
-              "RelativeDocumentMoniker": "DirectoryService.Domain\\DepartmentContexts\\ValueObjects\\DepVerification.cs",
-              "ToolTip": "D:\\lim\\source\\Solution1\\DirectoryService.Domain\\DepartmentContexts\\ValueObjects\\DepVerification.cs",
-              "RelativeToolTip": "DirectoryService.Domain\\DepartmentContexts\\ValueObjects\\DepVerification.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAANAAAAAAAAAA==",
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\lim\\source\\Solution1\\WebApplication1\\Program.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\Program.cs",
+              "ToolTip": "D:\\lim\\source\\Solution1\\WebApplication1\\Program.cs",
+              "RelativeToolTip": "WebApplication1\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-01T07:34:07.154Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "DepartmentPath.cs",
-              "DocumentMoniker": "D:\\lim\\source\\Solution1\\DirectoryService.Domain\\DepartmentContexts\\ValueObjects\\DepartmentPath.cs",
-              "RelativeDocumentMoniker": "DirectoryService.Domain\\DepartmentContexts\\ValueObjects\\DepartmentPath.cs",
-              "ToolTip": "D:\\lim\\source\\Solution1\\DirectoryService.Domain\\DepartmentContexts\\ValueObjects\\DepartmentPath.cs",
-              "RelativeToolTip": "DirectoryService.Domain\\DepartmentContexts\\ValueObjects\\DepartmentPath.cs",
-              "ViewState": "AgIAABoAAAAAAAAAAAAkwC4AAAAdAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-01T06:56:10.309Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "DepartmentId.cs",
-              "DocumentMoniker": "D:\\lim\\source\\Solution1\\DirectoryService.Domain\\DepartmentContexts\\ValueObjects\\DepartmentId.cs",
-              "RelativeDocumentMoniker": "DirectoryService.Domain\\DepartmentContexts\\ValueObjects\\DepartmentId.cs",
-              "ToolTip": "D:\\lim\\source\\Solution1\\DirectoryService.Domain\\DepartmentContexts\\ValueObjects\\DepartmentId.cs",
-              "RelativeToolTip": "DirectoryService.Domain\\DepartmentContexts\\ValueObjects\\DepartmentId.cs",
-              "ViewState": "AgIAABEAAAAAAAAAAAAwwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-01T06:52:14.051Z",
+              "WhenOpened": "2026-04-08T04:12:59.176Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "Department.cs",
-              "DocumentMoniker": "D:\\lim\\source\\Solution1\\DirectoryService.Domain\\DepartmentContexts\\Department.cs",
-              "RelativeDocumentMoniker": "DirectoryService.Domain\\DepartmentContexts\\Department.cs",
-              "ToolTip": "D:\\lim\\source\\Solution1\\DirectoryService.Domain\\DepartmentContexts\\Department.cs",
-              "RelativeToolTip": "DirectoryService.Domain\\DepartmentContexts\\Department.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAWAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-01T06:44:21.181Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "DepVerificationTests.cs",
-              "DocumentMoniker": "D:\\lim\\source\\Solution1\\TestProjectlim\\DepartmentContextsTests\\DepVerificationTests.cs",
-              "RelativeDocumentMoniker": "TestProjectlim\\DepartmentContextsTests\\DepVerificationTests.cs",
-              "ToolTip": "D:\\lim\\source\\Solution1\\TestProjectlim\\DepartmentContextsTests\\DepVerificationTests.cs*",
-              "RelativeToolTip": "TestProjectlim\\DepartmentContextsTests\\DepVerificationTests.cs*",
-              "ViewState": "AgIAAIgAAAAAAAAAAAAmwJQAAAAHAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-30T03:20:56.528Z",
-              "EditorCaption": ""
+              "Title": "WebApplication1.csproj",
+              "DocumentMoniker": "D:\\lim\\source\\Solution1\\WebApplication1\\WebApplication1.csproj",
+              "RelativeDocumentMoniker": "WebApplication1\\WebApplication1.csproj",
+              "ToolTip": "D:\\lim\\source\\Solution1\\WebApplication1\\WebApplication1.csproj",
+              "RelativeToolTip": "WebApplication1\\WebApplication1.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-04-08T03:37:52.547Z"
             }
           ]
         }

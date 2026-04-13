@@ -1,31 +1,42 @@
-﻿namespace DirectoryService.Domain.LocationsContext.ValueObjects;
-
-public sealed record LocationId
+﻿namespace DirectoryService.Domain.LocationsContext.ValueObjects
 {
-	public Guid Value { get; }
-
-	private LocationId(Guid value)
+	public sealed record LocationId
 	{
-		if (value == Guid.Empty)
+		public Guid Value { get; }
+
+		private LocationId(Guid value)
 		{
-			throw new ArgumentException("ID локации не может быть пустым.", nameof(value));
+			if (value == Guid.Empty)
+			{
+				throw new ArgumentException("ID локации не может быть пустым.", nameof(value));
+			}
+
+			Value = value;
 		}
 
-		Value = value;
-	}
+		public static LocationId Create()
+		{
+			return new(Guid.NewGuid());
+		}
 
-	public static LocationId Create(Guid id)
-	{
-		return new(id);
-	}
+		public static LocationId Create(Guid id)
+		{
+			return new(id);
+		}
 
-	public static LocationId New()
-	{
-		return new(Guid.NewGuid());
-	}
+		public static LocationId From(Guid guid)
+		{
+			return new(guid);
+		}
 
-	public static implicit operator Guid(LocationId locationId)
-	{
-		return locationId.Value;
+		public static implicit operator Guid(LocationId locationId)
+		{
+			return locationId.Value;
+		}
+
+		public override string ToString()
+		{
+			return Value.ToString();
+		}
 	}
 }

@@ -7,6 +7,11 @@ namespace DirectoryService.Domain.Shared.ValueObjects
 {
 	public sealed class PosInDep
 	{
+		public PosInDep(PositionId positionId)
+		{
+			PositionId = positionId;
+		}
+
 		public PosInDep(Position position, Department department)
 		{
 			Position = position;
@@ -16,8 +21,8 @@ namespace DirectoryService.Domain.Shared.ValueObjects
 		}
 
 		public PositionId PositionId { get; }
-		public Position Position { get; }
-		public DepartmentId DepartmentId { get; }
-		public Department Department { get; }
+		public Position? Position { get; }
+		public DepartmentId? DepartmentId { get; }
+		public Department? Department { get; }
 	}
 }

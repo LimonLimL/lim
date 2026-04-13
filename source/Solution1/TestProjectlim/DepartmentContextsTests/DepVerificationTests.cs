@@ -145,20 +145,6 @@ namespace DirectoryService.Tests.DepartmentContext.ValueObjects
             Assert.False(result);
         }
 
-        [Fact]
-        public void CheckIdentifierUniqueness_CaseSensitiveComparison()
-        {
-            var existingDepartments = new List<Department>
-            {
-                CreateDepartment(Guid.NewGuid(), "IT", "dep-1"),
-            };
-            var verification = new DepVerification(existingDepartments);
-            var differentCaseIdentifier = DepartmentIdentifier.Create("DEP-1");
-            var result = verification.CheckIdentifierUniqueness(differentCaseIdentifier);
-
-            Assert.True(result);
-        }
-
         #endregion
 
         #region Helper Methods

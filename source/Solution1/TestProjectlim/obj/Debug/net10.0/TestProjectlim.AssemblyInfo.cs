@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TestProjectlim")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5ed7c85c9a4beac5196ada9307313a4dba7983a0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5d44eb15084d892b54df3bcb3c50af5090e45e39")]
 [assembly: System.Reflection.AssemblyProductAttribute("TestProjectlim")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TestProjectlim")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

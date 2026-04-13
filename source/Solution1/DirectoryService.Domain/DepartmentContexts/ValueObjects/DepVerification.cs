@@ -20,6 +20,9 @@ public class DepVerification
 
 	public bool CheckIdentifierUniqueness(DepartmentIdentifier identifier)
 	{
-		return !_existingDepartments.Any(d => d.Identifier.Value == identifier.Value);
+		var exists = _existingDepartments.Any(d =>
+			string.Equals(d.Identifier.Value, identifier.Value, StringComparison.Ordinal)
+		);
+		return !exists;
 	}
 }

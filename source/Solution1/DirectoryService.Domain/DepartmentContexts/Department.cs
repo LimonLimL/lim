@@ -1,20 +1,26 @@
 ﻿using DirectoryService.Domain.DepartmentContext.ValueObjects;
+using DirectoryService.Domain.PositionContext;
+using DirectoryService.Domain.PositionContext.ValueObjects;
+using DirectoryService.Domain.PositionContexts.ValueObjects;
 using DirectoryService.Domain.Shared.ValueObjects;
 
 namespace DirectoryService.Domain.DepartmentContexts;
 
 public class Department
 {
-	public DepartmentId Id { get; private set; }
-	public DepartmentName Name { get; private set; }
-	public DepartmentIdentifier Identifier { get; private set; }
+	public DepartmentId Id { get; private set; } = null!;
+	public DepartmentName Name { get; private set; } = null!;
+	public DepartmentIdentifier Identifier { get; private set; } = null!;
 	public DepartmentId? ParentId { get; private set; }
-	public DepartmentPath Path { get; private set; }
-	public HierarchyLevel Level { get; private set; }
+	public DepartmentPath Path { get; private set; } = null!;
+	public HierarchyLevel Level { get; private set; } = null!;
 	public bool IsActive { get; private set; }
+	private List<PositionAdvertisement> _advertisements = new();
 
 	private List<LocInDep> _locInDeps = new();
 	private List<PosInDep> _posInDeps = new();
+
+	public Department() { }
 
 	public Department(
 		DepartmentId id,
@@ -52,16 +58,6 @@ public class Department
 		bool isActive = true
 	)
 	{
-		//var department = new Department(
-		//	DepartmentId.Create(),
-		//	name,
-		//	identifier,
-		//	null,
-		//	DepartmentPath.CreateRoot(name.Value),
-		//	HierarchyLevel.Create(1),
-		//	isActive
-		//);
-
 		DepartmentId id = DepartmentId.Create();
 		DepartmentPath path = DepartmentPath.СоздатьИзИдентификатора(identifier);
 		HierarchyLevel level = HierarchyLevel.Create(1);
@@ -162,5 +158,21 @@ public class Department
 				throw new InvalidOperationException("Должность не может повторяться внутри подразделения.");
 		}
 		_posInDeps.Add(posInDep);
+	}
+
+	public PositionAdvertisement PublishAdvertisementForPosition(Position position)
+	{
+		if (position == null)
+			throw new ArgumentNullException(nameof(position));
+
+		var advertisement = new PositionAdvertisement(position);
+		_advertisements.Add(advertisement);
+		return advertisement;
+	}
+
+	public void MovePosition(PositionId targetId, PositionId relativeId)
+	{
+		var moveOperation = new MovePosition(_advertisements);
+		moveOperation.Execute(targetId, relativeId);
 	}
 }
