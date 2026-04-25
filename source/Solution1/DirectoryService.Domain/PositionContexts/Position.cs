@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net;
+using DirectoryService.Domain.LocationsContext;
 using DirectoryService.Domain.LocationsContext.ValueObjects;
 using DirectoryService.Domain.PositionContext.ValueObjects;
 using DirectoryService.Domain.Shared.ValueObjects;
@@ -58,8 +60,10 @@ public class Position
 	)
 	{
 		var toCheck = new Position(PositionId.Create(), name, description, isActive, lifeTime);
-		if (!posVerification.СheckUniqueness(toCheck))
+
+		if (!posVerification.CheckUniqueness(toCheck))
 			throw new InvalidOperationException($"{name} уже существует.");
+
 		return toCheck;
 	}
 
@@ -101,5 +105,10 @@ public class Position
 			IsActive.Create(true),
 			EntityLifeTime.CreateNew()
 		);
+	}
+
+	public Position Archive()
+	{
+		throw new NotImplementedException();
 	}
 }

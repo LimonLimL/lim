@@ -22,6 +22,11 @@ public class Location
 		LifeTime = LifeTime.Update();
 	}
 
+	public void Archive()
+	{
+		LifeTime = EntityLifeTime.Create(LifeTime.CreatedAt, DateTime.UtcNow, false);
+	}
+
 	public Location(
 		LocationId id,
 		LocationAddress address,

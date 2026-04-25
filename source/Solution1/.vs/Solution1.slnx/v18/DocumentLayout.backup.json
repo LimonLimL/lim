@@ -3,16 +3,12 @@
   "WorkspaceRootPath": "D:\\lim\\source\\Solution1\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{37661DD9-DC0E-4953-A651-1E1C101DE3C2}|WebApplication1\\WebApplication1.csproj|d:\\lim\\source\\solution1\\webapplication1\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{37661DD9-DC0E-4953-A651-1E1C101DE3C2}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{37661DD9-DC0E-4953-A651-1E1C101DE3C2}|WebApplication1\\WebApplication1.csproj|d:\\lim\\source\\solution1\\webapplication1\\inmemorystorage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{37661DD9-DC0E-4953-A651-1E1C101DE3C2}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\inmemorystorage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{37661DD9-DC0E-4953-A651-1E1C101DE3C2}|WebApplication1\\WebApplication1.csproj|d:\\lim\\source\\solution1\\webapplication1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{37661DD9-DC0E-4953-A651-1E1C101DE3C2}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{37661DD9-DC0E-4953-A651-1E1C101DE3C2}|WebApplication1\\WebApplication1.csproj|d:\\lim\\source\\solution1\\webapplication1\\webapplication1.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{37661DD9-DC0E-4953-A651-1E1C101DE3C2}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\webapplication1.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+      "AbsoluteMoniker": "D:0:0:{37661DD9-DC0E-4953-A651-1E1C101DE3C2}|WebApplication1\\WebApplication1.csproj|d:\\lim\\source\\solution1\\webapplication1\\inmemoryposverification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{37661DD9-DC0E-4953-A651-1E1C101DE3C2}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\inmemoryposverification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,53 +18,37 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "launchSettings.json",
-              "DocumentMoniker": "D:\\lim\\source\\Solution1\\WebApplication1\\Properties\\launchSettings.json",
-              "RelativeDocumentMoniker": "WebApplication1\\Properties\\launchSettings.json",
-              "ToolTip": "D:\\lim\\source\\Solution1\\WebApplication1\\Properties\\launchSettings.json*",
-              "RelativeToolTip": "WebApplication1\\Properties\\launchSettings.json*",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAfAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-04-13T02:04:43.442Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
-            },
-            {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\lim\\source\\Solution1\\WebApplication1\\Program.cs",
-              "RelativeDocumentMoniker": "WebApplication1\\Program.cs",
-              "ToolTip": "D:\\lim\\source\\Solution1\\WebApplication1\\Program.cs",
-              "RelativeToolTip": "WebApplication1\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACUAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "InMemoryStorage.cs",
+              "DocumentMoniker": "D:\\lim\\source\\Solution1\\WebApplication1\\InMemoryStorage.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\InMemoryStorage.cs",
+              "ToolTip": "D:\\lim\\source\\Solution1\\WebApplication1\\InMemoryStorage.cs",
+              "RelativeToolTip": "WebApplication1\\InMemoryStorage.cs",
+              "ViewState": "AgIAAEkAAAAAAAAAAAAmwGsAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-08T04:12:59.176Z",
+              "WhenOpened": "2026-04-15T03:16:43.576Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "WebApplication1.csproj",
-              "DocumentMoniker": "D:\\lim\\source\\Solution1\\WebApplication1\\WebApplication1.csproj",
-              "RelativeDocumentMoniker": "WebApplication1\\WebApplication1.csproj",
-              "ToolTip": "D:\\lim\\source\\Solution1\\WebApplication1\\WebApplication1.csproj",
-              "RelativeToolTip": "WebApplication1\\WebApplication1.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2026-04-08T03:37:52.547Z"
+              "DocumentIndex": 1,
+              "Title": "InMemoryPosVerification.cs",
+              "DocumentMoniker": "D:\\lim\\source\\Solution1\\WebApplication1\\InMemoryPosVerification.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\InMemoryPosVerification.cs",
+              "ToolTip": "D:\\lim\\source\\Solution1\\WebApplication1\\InMemoryPosVerification.cs",
+              "RelativeToolTip": "WebApplication1\\InMemoryPosVerification.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-17T03:17:40.098Z",
+              "EditorCaption": ""
             }
           ]
         }

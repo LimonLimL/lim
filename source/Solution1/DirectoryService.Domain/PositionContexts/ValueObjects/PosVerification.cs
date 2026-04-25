@@ -6,6 +6,6 @@ namespace DirectoryService.Domain.PositionContext.ValueObjects
 {
 	public interface PosVerification
 	{
-		public bool СheckUniqueness(Position other);
+		bool CheckUniqueness(Position other);
 	}
 }

@@ -44,4 +44,9 @@ public sealed class EntityLifeTime
 		DateTime now = DateTime.UtcNow;
 		return new EntityLifeTime(now, now, true);
 	}
+
+	public object Archive()
+	{
+		throw new NotImplementedException();
+	}
 }

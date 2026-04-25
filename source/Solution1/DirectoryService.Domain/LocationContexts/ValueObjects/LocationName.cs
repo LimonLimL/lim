@@ -21,7 +21,7 @@ public class LocationName
 			throw new ArgumentException("Название локации не может быть пустым.", nameof(value));
 		}
 
-		if (value.Length < MaxLength)
+		if (value.Length > MaxLength)
 		{
 			throw new ArgumentException($"Название локации не может превышать {MaxLength} символов.", nameof(value));
 		}

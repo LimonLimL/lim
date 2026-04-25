@@ -1,106 +1,153 @@
-﻿using DirectoryService.Domain.LocationsContext;
+﻿using System.Threading;
+using DirectoryService.Domain.LocationsContext;
 using DirectoryService.Domain.LocationsContext.ValueObjects;
 using DirectoryService.Domain.PositionContext;
 using DirectoryService.Domain.PositionContext.ValueObjects;
 using DirectoryService.Domain.Shared.ValueObjects;
 
-namespace DirectoryService.WebApplication; 
+namespace DirectoryService.WebApi.Storages;
 
-public static class InMemoryStorage
+public static class Storage
 {
-    
     private static readonly Dictionary<LocationId, Location> _locations = new();
     private static readonly Dictionary<PositionId, Position> _positions = new();
+    private static object _lock = new();
 
-   
-
-    public static void AddLocation(Location location)
+    public static void Add(Location location)
     {
         if (_locations.ContainsKey(location.Id))
-            throw new InvalidOperationException($"Location with ID {location.Id} already exists.");
+            throw new InvalidOperationException("Локация с таким ID уже существует.");
 
-        if (_locations.Any(l => l.Value.Name.Value == location.Name.Value))
-            throw new InvalidOperationException($"Location with Name '{location.Name.Value}' already exists.");
+        if (
+            _locations.Any(l =>
+                l.Value.Name.Value == location.Name.Value && l.Value.LifeTime.IsActivate
+            )
+        )
+            throw new InvalidOperationException("Локация с таким именем уже существует.");
 
         _locations.Add(location.Id, location);
     }
 
-    public static Location? GetLocationById(LocationId id)
+    public static Location? GetById(LocationId id)
     {
-        _locations.TryGetValue(id, out var location);
-        return location;
+        if (_locations.TryGetValue(id, out var location))
+        {
+            return location.LifeTime.IsActivate ? location : null;
+        }
+        return null;
     }
 
     public static IEnumerable<Location> GetAllLocations()
     {
-        return _locations.Values;
+        return _locations.Values.Where(l => l.LifeTime.IsActivate);
     }
 
-    public static void ArchiveLocation(LocationId id)
+    public static void Remove(LocationId id)
     {
-        if (_locations.TryGetValue(id, out var location))
+        lock (_lock)
         {
-            location.LifeTime = EntityLifeTime.Create(location.LifeTime.CreatedAt, location.LifeTime.UpdatedAt, false);
-        }
-        else
-        {
-            throw new InvalidOperationException("Location not found.");
+            if (!_locations.TryGetValue(id, out var location))
+                throw new KeyNotFoundException("Локация не найдена.");
+
+            if (!location.LifeTime.IsActivate)
+                throw new InvalidOperationException("Локация уже архивирована.");
+
+            var archivedLifeTime = EntityLifeTime.Create(
+                location.LifeTime.CreatedAt,
+                DateTime.UtcNow,
+                false
+            );
         }
     }
 
-    public static void HardRemoveLocation(LocationId id)
+    public static bool HardRemove(LocationId id)
     {
-        _locations.Remove(id);
+        return _locations.Remove(id);
     }
 
-
-    public static void AddPosition(Position position)
+    public static void Add(Position position)
     {
         if (_positions.ContainsKey(position.Id))
-            throw new InvalidOperationException($"Position with ID {position.Id} already exists.");
+            throw new InvalidOperationException("Должность с таким ID уже существует.");
 
-        if (_positions.Any(p => p.Value.Name.Value == position.Name.Value))
-            throw new InvalidOperationException($"Position with Name '{position.Name.Value}' already exists.");
+        if (
+            _positions.Any(p =>
+                p.Value.Name.Value == position.Name.Value && p.Value.LifeTime.IsActivate
+            )
+        )
+            throw new InvalidOperationException("Должность с таким именем уже существует.");
 
         _positions.Add(position.Id, position);
     }
 
-    public static Position? GetPositionById(PositionId id)
+    public static Position? GetById(PositionId id)
     {
-        _positions.TryGetValue(id, out var position);
-        return position;
+        if (_positions.TryGetValue(id, out var position))
+        {
+            return position.LifeTime.IsActivate ? position : null;
+        }
+        return null;
     }
 
     public static IEnumerable<Position> GetAllPositions()
     {
-        return _positions.Values;
+        return _positions.Values.Where(p => p.LifeTime.IsActivate);
     }
 
-    public static void ArchivePosition(PositionId id)
+    public static void Remove(PositionId id)
     {
-        if (_positions.TryGetValue(id, out var position))
-        {
-            position.LifeTime = 
-        }
-        else
-        {
-            throw new InvalidOperationException("Position not found.");
-        }
+        if (!_positions.TryGetValue(id, out var position))
+            throw new KeyNotFoundException("Должность не найдена.");
+
+        if (!position.LifeTime.IsActivate)
+            throw new InvalidOperationException("Должность уже архивирована.");
+
+        var archivedLifeTime = EntityLifeTime.Create(
+            position.LifeTime.CreatedAt,
+            DateTime.UtcNow,
+            false
+        );
     }
 
-    public static void HardRemovePosition(PositionId id)
+    public static bool HardRemove(PositionId id)
     {
-        _positions.Remove(id);
+        return _positions.Remove(id);
     }
 
     public static void InitializeStorage()
     {
-        
-        var loc1 = new Location(new LocationName("Москва"), new LocationDescription("Столица"), IsActive.Create(true), EntityLifeTime.CreateNew());
-        AddLocation(new Location(LocationId.Create(), new LocationName("Москва"), ...));
-        AddLocation(new Location(LocationId.Create(), new LocationName("Санкт-Петербург"), ...));   
-        AddPosition(new Position(PositionId.Create(), new PositionName("Директор"), ...));
-        AddPosition(new Position(PositionId.Create(), new PositionName("Разработчик"), ...));
-       
+        if (_locations.Count > 0 || _positions.Count > 0)
+            return;
+
+        lock (_lock)
+        {
+            var now = DateTime.UtcNow;
+
+            var location1 = Location.Create(
+                Guid.NewGuid(),
+                "г. Москва, ул. Тверская, 1",
+                "Москва",
+                "Europe/Moscow",
+                now,
+                now
+            );
+            _locations[location1.Id] = location1;
+
+            var location2 = Location.Create(
+                Guid.NewGuid(),
+                "г. Санкт-Петербург, Невский проспект, 28",
+                "Санкт-Петербург",
+                "Europe/Moscow",
+                now,
+                now
+            );
+            _locations[location2.Id] = location2;
+
+            var pos1 = new Position("Backend Developer");
+            _positions[pos1.Id] = pos1;
+
+            var pos2 = new Position("QA Engineer");
+            _positions[pos2.Id] = pos2;
+        }
     }
 }
