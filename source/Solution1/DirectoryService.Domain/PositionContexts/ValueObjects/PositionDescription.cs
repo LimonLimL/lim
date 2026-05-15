@@ -9,6 +9,11 @@ public record PositionDescription
 		Value = value;
 	}
 
+	private PositionDescription()
+	{
+		Value = string.Empty;
+	}
+
 	private const int MaxLength = 500;
 
 	public static PositionDescription Create(string description)

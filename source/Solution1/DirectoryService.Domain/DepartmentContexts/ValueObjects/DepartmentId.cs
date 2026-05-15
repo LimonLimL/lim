@@ -33,4 +33,14 @@ public record DepartmentId
 	{
 		return Value.ToString();
 	}
+
+	public static DepartmentId From(Guid? value)
+	{
+		throw new NotImplementedException();
+	}
+
+	private DepartmentId()
+	{
+		Value = Guid.Empty;
+	}
 }

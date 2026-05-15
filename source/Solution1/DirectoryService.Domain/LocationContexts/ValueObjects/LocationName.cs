@@ -14,6 +14,11 @@ public class LocationName
 		Value = value;
 	}
 
+	private LocationName()
+	{
+		Value = string.Empty;
+	}
+
 	public static LocationName Create(string value)
 	{
 		if (string.IsNullOrWhiteSpace(value))

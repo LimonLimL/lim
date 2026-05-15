@@ -4,6 +4,11 @@ public record DepartmentDepth
 {
 	public short Value { get; }
 
+	private DepartmentDepth()
+	{
+		Value = 0;
+	}
+
 	private DepartmentDepth(short value)
 	{
 		Value = value;

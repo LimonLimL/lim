@@ -8,19 +8,21 @@ namespace DirectoryService.Domain.DepartmentContexts;
 
 public class Department
 {
+	private Department() { }
+
 	public DepartmentId Id { get; private set; } = null!;
 	public DepartmentName Name { get; private set; } = null!;
 	public DepartmentIdentifier Identifier { get; private set; } = null!;
 	public DepartmentId? ParentId { get; private set; }
 	public DepartmentPath Path { get; private set; } = null!;
 	public HierarchyLevel Level { get; private set; } = null!;
-	public bool IsActive { get; private set; }
-	private List<PositionAdvertisement> _advertisements = new();
 
+	public DepartmentDepth Depth { get; private set; } = null!;
+	public EntityLifeTime LifeTime { get; private set; } = null!;
+
+	private List<PositionAdvertisement> _advertisements = new();
 	private List<LocInDep> _locInDeps = new();
 	private List<PosInDep> _posInDeps = new();
-
-	public Department() { }
 
 	public Department(
 		DepartmentId id,
@@ -29,7 +31,9 @@ public class Department
 		DepartmentId? parentId,
 		DepartmentPath path,
 		HierarchyLevel level,
-		bool isActive
+		DepartmentDepth depth,
+		bool isActive,
+		EntityLifeTime lifeTime
 	)
 	{
 		Id = id;
@@ -38,7 +42,9 @@ public class Department
 		ParentId = parentId;
 		Path = path;
 		Level = level;
-		IsActive = isActive;
+		Depth = depth;
+
+		LifeTime = lifeTime;
 	}
 
 	public static Department CreateRoot(DepartmentName name)
@@ -59,9 +65,13 @@ public class Department
 	)
 	{
 		DepartmentId id = DepartmentId.Create();
-		DepartmentPath path = DepartmentPath.СоздатьИзИдентификатора(identifier);
+		DepartmentPath path = DepartmentPath.Create(identifier.Value);
 		HierarchyLevel level = HierarchyLevel.Create(1);
-		Department department = new(id, name, identifier, null, path, level, isActive);
+
+		DepartmentDepth depth = DepartmentDepth.Create(0);
+		EntityLifeTime lifeTime = EntityLifeTime.CreateNew();
+
+		Department department = new(id, name, identifier, null, path, level, depth, isActive, lifeTime);
 
 		bool depVer = depVerification.CheckUniqueness(department);
 		if (!depVer)
@@ -84,7 +94,20 @@ public class Department
 		var path = DepartmentPath.Create($"{parent.Path.Value}.{name.Value}");
 		var level = HierarchyLevel.Create(parent.Level.Value + 1);
 
-		return new Department(DepartmentId.Create(), name, identifier, parent.Id, path, level, isActive);
+		var depth = DepartmentDepth.Create((short)(parent.Depth.Value + 1));
+		var lifeTime = EntityLifeTime.CreateNew();
+
+		return new Department(
+			DepartmentId.Create(),
+			name,
+			identifier,
+			parent.Id,
+			path,
+			level,
+			depth,
+			isActive,
+			lifeTime
+		);
 	}
 
 	public void ConnectDepartment(Department department)
@@ -137,7 +160,6 @@ public class Department
 	{
 		Name = name;
 		Identifier = identifier;
-		IsActive = isActive;
 	}
 
 	public void AddLoc(LocInDep locInDep)

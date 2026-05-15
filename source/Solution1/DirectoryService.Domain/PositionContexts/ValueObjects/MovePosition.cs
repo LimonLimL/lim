@@ -1,4 +1,5 @@
-﻿using DirectoryService.Domain.PositionContext;
+﻿using DirectoryService.Domain.DepartmentContexts;
+using DirectoryService.Domain.PositionContext;
 using DirectoryService.Domain.PositionContext.ValueObjects;
 
 namespace DirectoryService.Domain.PositionContexts.ValueObjects
@@ -6,6 +7,11 @@ namespace DirectoryService.Domain.PositionContexts.ValueObjects
 	public class MovePosition
 	{
 		private readonly List<PositionAdvertisement> _advertisements;
+
+		private MovePosition()
+		{
+			_advertisements = new List<PositionAdvertisement>();
+		}
 
 		public MovePosition(List<PositionAdvertisement> advertisements)
 		{

@@ -18,6 +18,8 @@ public class Position
 		LifeTime = LifeTime.Update();
 	}
 
+	private Position() { }
+
 	public PositionId Id { get; private set; } = null!;
 	public PositionName Name { get; private set; } = null!;
 	public PositionDescription Description { get; private set; } = null!;

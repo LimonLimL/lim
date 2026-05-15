@@ -5,8 +5,11 @@ public class LocationAddress
 	private readonly List<string> _addressParts = [];
 	public string Value { get; }
 	public IReadOnlyList<string> AddressParts => _addressParts.AsReadOnly();
-
-	private LocationAddress(IEnumerable<string> parts)
+    private LocationAddress()
+    {
+        Value = string.Empty;
+    }
+    private LocationAddress(IEnumerable<string> parts)
 	{
 		_addressParts = [.. parts];
 		Value = string.Join(", ", parts);

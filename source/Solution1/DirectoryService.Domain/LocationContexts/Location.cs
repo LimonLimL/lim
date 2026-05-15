@@ -24,7 +24,7 @@ public class Location
 
 	public void Archive()
 	{
-		LifeTime = EntityLifeTime.Create(LifeTime.CreatedAt, DateTime.UtcNow, false);
+		LifeTime = EntityLifeTime.Create(LifeTime.CreatedAt, DateTime.UtcNow, DateTime.UtcNow, false);
 	}
 
 	public Location(
@@ -42,11 +42,13 @@ public class Location
 		LifeTime = lifeTime;
 	}
 
-	public LocationId Id { get; }
-	public LocationName Name { get; set; }
-	public LocationAddress Address { get; }
-	public EntityLifeTime LifeTime { get; set; }
-	public IanaTimeZone TimeZone { get; set; }
+	private Location() { }
+
+	public LocationId Id { get; } = null!;
+	public LocationName Name { get; set; } = null!;
+	public LocationAddress Address { get; } = null!;
+	public EntityLifeTime LifeTime { get; set; } = null!;
+	public IanaTimeZone TimeZone { get; set; } = null!;
 
 	public static Location Create(
 		Guid id,
@@ -86,7 +88,7 @@ public class Location
 		LocationName locationName = LocationName.Create(name);
 		LocationAddress locationAddress = LocationAddress.Create(address);
 		IanaTimeZone ianaTimeZone = IanaTimeZone.Create(timeZone);
-		EntityLifeTime entityLifeTime = EntityLifeTime.Create(createdAt, updatedAt, true);
+		EntityLifeTime entityLifeTime = EntityLifeTime.Create(createdAt, updatedAt, null, true);
 		return new Location(locationId, locationAddress, locationName, ianaTimeZone, entityLifeTime);
 	}
 }

@@ -3,12 +3,20 @@
   "WorkspaceRootPath": "D:\\lim\\source\\Solution1\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{37661DD9-DC0E-4953-A651-1E1C101DE3C2}|WebApplication1\\WebApplication1.csproj|d:\\lim\\source\\solution1\\webapplication1\\inmemorystorage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{37661DD9-DC0E-4953-A651-1E1C101DE3C2}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\inmemorystorage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C632E2ED-C2EE-4529-899A-F92982F88A23}|Inrstructure.PostgreSQL\\Infrastructure.PostgreSQL.csproj|d:\\lim\\source\\solution1\\inrstructure.postgresql\\modelconfigurations\\positionconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C632E2ED-C2EE-4529-899A-F92982F88A23}|Inrstructure.PostgreSQL\\Infrastructure.PostgreSQL.csproj|solutionrelative:inrstructure.postgresql\\modelconfigurations\\positionconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{37661DD9-DC0E-4953-A651-1E1C101DE3C2}|WebApplication1\\WebApplication1.csproj|d:\\lim\\source\\solution1\\webapplication1\\inmemoryposverification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{37661DD9-DC0E-4953-A651-1E1C101DE3C2}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\inmemoryposverification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7D3A5845-5B0B-4E79-8310-ACAF95458DF3}|DirectoryService.Domain\\DirectoryService.Domain.csproj|d:\\lim\\source\\solution1\\directoryservice.domain\\locationcontexts\\location.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7D3A5845-5B0B-4E79-8310-ACAF95458DF3}|DirectoryService.Domain\\DirectoryService.Domain.csproj|solutionrelative:directoryservice.domain\\locationcontexts\\location.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C632E2ED-C2EE-4529-899A-F92982F88A23}|Inrstructure.PostgreSQL\\Infrastructure.PostgreSQL.csproj|d:\\lim\\source\\solution1\\inrstructure.postgresql\\modelconfigurations\\locationconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C632E2ED-C2EE-4529-899A-F92982F88A23}|Inrstructure.PostgreSQL\\Infrastructure.PostgreSQL.csproj|solutionrelative:inrstructure.postgresql\\modelconfigurations\\locationconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C632E2ED-C2EE-4529-899A-F92982F88A23}|Inrstructure.PostgreSQL\\Infrastructure.PostgreSQL.csproj|d:\\lim\\source\\solution1\\inrstructure.postgresql\\modelconfigurations\\departmentconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C632E2ED-C2EE-4529-899A-F92982F88A23}|Inrstructure.PostgreSQL\\Infrastructure.PostgreSQL.csproj|solutionrelative:inrstructure.postgresql\\modelconfigurations\\departmentconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,37 +26,63 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
-            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "InMemoryStorage.cs",
-              "DocumentMoniker": "D:\\lim\\source\\Solution1\\WebApplication1\\InMemoryStorage.cs",
-              "RelativeDocumentMoniker": "WebApplication1\\InMemoryStorage.cs",
-              "ToolTip": "D:\\lim\\source\\Solution1\\WebApplication1\\InMemoryStorage.cs",
-              "RelativeToolTip": "WebApplication1\\InMemoryStorage.cs",
-              "ViewState": "AgIAAEkAAAAAAAAAAAAmwGsAAAARAAAAAAAAAA==",
+              "Title": "PositionConfiguration.cs",
+              "DocumentMoniker": "D:\\lim\\source\\Solution1\\Inrstructure.PostgreSQL\\ModelConfigurations\\PositionConfiguration.cs",
+              "RelativeDocumentMoniker": "Inrstructure.PostgreSQL\\ModelConfigurations\\PositionConfiguration.cs",
+              "ToolTip": "D:\\lim\\source\\Solution1\\Inrstructure.PostgreSQL\\ModelConfigurations\\PositionConfiguration.cs",
+              "RelativeToolTip": "Inrstructure.PostgreSQL\\ModelConfigurations\\PositionConfiguration.cs",
+              "ViewState": "AgIAACUAAAAAAAAAAAAgwEkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-15T03:16:43.576Z",
+              "WhenOpened": "2026-05-15T03:10:36.947Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "InMemoryPosVerification.cs",
-              "DocumentMoniker": "D:\\lim\\source\\Solution1\\WebApplication1\\InMemoryPosVerification.cs",
-              "RelativeDocumentMoniker": "WebApplication1\\InMemoryPosVerification.cs",
-              "ToolTip": "D:\\lim\\source\\Solution1\\WebApplication1\\InMemoryPosVerification.cs",
-              "RelativeToolTip": "WebApplication1\\InMemoryPosVerification.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAAAAAAAAAAAA==",
+              "Title": "Location.cs",
+              "DocumentMoniker": "D:\\lim\\source\\Solution1\\DirectoryService.Domain\\LocationContexts\\Location.cs",
+              "RelativeDocumentMoniker": "DirectoryService.Domain\\LocationContexts\\Location.cs",
+              "ToolTip": "D:\\lim\\source\\Solution1\\DirectoryService.Domain\\LocationContexts\\Location.cs",
+              "RelativeToolTip": "DirectoryService.Domain\\LocationContexts\\Location.cs",
+              "ViewState": "AgIAABkAAAAAAAAAAAApwDIAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-17T03:17:40.098Z",
+              "WhenOpened": "2026-05-15T03:04:18.343Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "LocationConfiguration.cs",
+              "DocumentMoniker": "D:\\lim\\source\\Solution1\\Inrstructure.PostgreSQL\\ModelConfigurations\\LocationConfiguration.cs",
+              "RelativeDocumentMoniker": "Inrstructure.PostgreSQL\\ModelConfigurations\\LocationConfiguration.cs",
+              "ToolTip": "D:\\lim\\source\\Solution1\\Inrstructure.PostgreSQL\\ModelConfigurations\\LocationConfiguration.cs",
+              "RelativeToolTip": "Inrstructure.PostgreSQL\\ModelConfigurations\\LocationConfiguration.cs",
+              "ViewState": "AgIAACYAAAAAAAAAAAAgwC0AAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-15T02:57:29.648Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "DepartmentConfiguration.cs",
+              "DocumentMoniker": "D:\\lim\\source\\Solution1\\Inrstructure.PostgreSQL\\ModelConfigurations\\DepartmentConfiguration.cs",
+              "RelativeDocumentMoniker": "Inrstructure.PostgreSQL\\ModelConfigurations\\DepartmentConfiguration.cs",
+              "ToolTip": "D:\\lim\\source\\Solution1\\Inrstructure.PostgreSQL\\ModelConfigurations\\DepartmentConfiguration.cs",
+              "RelativeToolTip": "Inrstructure.PostgreSQL\\ModelConfigurations\\DepartmentConfiguration.cs",
+              "ViewState": "AgIAAEkAAAAAAAAAAAAgwEoAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-15T02:42:10.399Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
             }
           ]
         }

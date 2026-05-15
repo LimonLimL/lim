@@ -1,4 +1,5 @@
-﻿using DirectoryService.Domain.DepartmentContexts;
+﻿using DirectoryService.Domain.DepartmentContext.ValueObjects;
+using DirectoryService.Domain.DepartmentContexts;
 using DirectoryService.Domain.LocationsContext.ValueObjects;
 using DirectoryService.Domain.PositionContext.ValueObjects;
 using DirectoryService.Domain.Shared.ValueObjects;
@@ -10,7 +11,13 @@ namespace DirectoryService.Tests.DepartmentContexts
         [Fact]
         public void AddLoc_DuplicateLocationId_ThrowsInvalidOperationException()
         {
-            var department = new Department();
+            var department = Department.CreateRoot(
+                DepartmentName.Create("Test Department"),
+                DepartmentIdentifier.Create("test-dep"),
+                new DepVerification(new List<Department>()),
+                true
+            );
+
             var locationId = LocationId.Create();
             var locInDep1 = new LocInDep(locationId);
             var locInDep2 = new LocInDep(locationId);
@@ -26,12 +33,19 @@ namespace DirectoryService.Tests.DepartmentContexts
         [Fact]
         public void AddPos_DuplicatePositionId_ThrowsInvalidOperationException()
         {
-            var department = new Department();
+            var department = Department.CreateRoot(
+                DepartmentName.Create("Test Department"),
+                DepartmentIdentifier.Create("test-dep"),
+                new DepVerification(new List<Department>()),
+                true
+            );
+
             var positionId = PositionId.Create();
             var posInDep1 = new PosInDep(positionId);
             var posInDep2 = new PosInDep(positionId);
 
             department.AddPos(posInDep1);
+
             var exception = Assert.Throws<InvalidOperationException>(() =>
                 department.AddPos(posInDep2)
             );

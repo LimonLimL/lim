@@ -7,6 +7,11 @@ public record DepartmentName
 		Value = value;
 	}
 
+	private DepartmentName()
+	{
+		Value = string.Empty;
+	}
+
 	public string Value { get; }
 	private const int MaxLength = 100;
 

@@ -6,6 +6,11 @@ public class DepVerification
 {
 	private readonly List<Department> _existingDepartments;
 
+	private DepVerification()
+	{
+		_existingDepartments = new List<Department>();
+	}
+
 	public DepVerification(List<Department> existingDepartments)
 	{
 		_existingDepartments = existingDepartments ?? new List<Department>();

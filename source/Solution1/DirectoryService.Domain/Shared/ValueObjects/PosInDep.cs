@@ -7,6 +7,8 @@ namespace DirectoryService.Domain.Shared.ValueObjects
 {
 	public sealed class PosInDep
 	{
+		private PosInDep() { }
+
 		public PosInDep(PositionId positionId)
 		{
 			PositionId = positionId;
@@ -20,7 +22,7 @@ namespace DirectoryService.Domain.Shared.ValueObjects
 			DepartmentId = department.Id;
 		}
 
-		public PositionId PositionId { get; }
+		public PositionId PositionId { get; } = null!;
 		public Position? Position { get; }
 		public DepartmentId? DepartmentId { get; }
 		public Department? Department { get; }

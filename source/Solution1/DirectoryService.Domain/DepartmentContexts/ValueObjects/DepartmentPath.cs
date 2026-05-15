@@ -6,6 +6,11 @@ public record DepartmentPath
 {
 	public string Value { get; private set; }
 
+	private DepartmentPath()
+	{
+		Value = string.Empty;
+	}
+
 	private DepartmentPath(string value)
 	{
 		Value = value;
@@ -42,14 +47,19 @@ public record DepartmentPath
 		return new DepartmentPath(trimmed);
 	}
 
-	public static DepartmentPath СоздатьИзИдентификатора(DepartmentIdentifier identifier)
+	public static DepartmentPath Create(string value)
 	{
-		return new(identifier.Value);
-	}
+		if (string.IsNullOrWhiteSpace(value))
+			throw new ArgumentException("Путь не может быть пустым.", nameof(value));
 
-	internal static DepartmentPath Create(string joinedName)
-	{
-		throw new NotImplementedException();
+		var trimmed = value.Trim();
+
+		if (trimmed.Length > MaxLength)
+		{
+			throw new ArgumentException($"Путь не может превышать {MaxLength} символов", nameof(value));
+		}
+
+		return new DepartmentPath(trimmed);
 	}
 
 	public bool IsRoot => string.IsNullOrEmpty(Value);

@@ -7,6 +7,11 @@ public record PositionName
 		Value = value;
 	}
 
+	private PositionName()
+	{
+		Value = string.Empty;
+	}
+
 	public string Value { get; }
 
 	private const int MaxLength = 100;

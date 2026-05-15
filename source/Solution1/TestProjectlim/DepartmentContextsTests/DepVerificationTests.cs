@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using DirectoryService.Domain.DepartmentContext.ValueObjects;
 using DirectoryService.Domain.DepartmentContexts;
+using DirectoryService.Domain.Shared.ValueObjects;
 using Xunit;
 
 namespace DirectoryService.Tests.DepartmentContext.ValueObjects
@@ -161,15 +162,24 @@ namespace DirectoryService.Tests.DepartmentContext.ValueObjects
             DepartmentId departmentId = DepartmentId.From(id);
             DepartmentName departmentName = DepartmentName.Create(name);
             DepartmentIdentifier departmentIdentifier = DepartmentIdentifier.Create(identifier);
-            DepartmentPath departmentPath = DepartmentPath.СоздатьИзИдентификатора(
-                departmentIdentifier
-            );
+            DepartmentPath departmentPath = DepartmentPath.Create(identifier);
+
             HierarchyLevel hierarchyLevel = HierarchyLevel.Create(level);
             DepartmentId? departmentdid = null;
+
             if (parentId != null)
             {
                 departmentdid = DepartmentId.From(parentId.Value);
             }
+
+            DepartmentDepth depth = DepartmentDepth.Create((short)level);
+            EntityLifeTime lifeTime = EntityLifeTime.Create(
+                DateTime.UtcNow,
+                DateTime.UtcNow,
+                DateTime.UtcNow,
+                isActive
+            );
+
             return new Department(
                 departmentId,
                 departmentName,
@@ -177,7 +187,9 @@ namespace DirectoryService.Tests.DepartmentContext.ValueObjects
                 departmentdid,
                 departmentPath,
                 hierarchyLevel,
-                isActive
+                depth,
+                isActive,
+                lifeTime
             );
         }
 

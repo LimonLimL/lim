@@ -38,5 +38,10 @@
 		{
 			return Value.ToString();
 		}
+
+		private LocationId()
+		{
+			Value = Guid.Empty;
+		}
 	}
 }

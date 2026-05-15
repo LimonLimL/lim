@@ -4,6 +4,11 @@ public sealed record Rank
 {
 	public int Value { get; }
 
+	private Rank()
+	{
+		Value = 0;
+	}
+
 	private Rank(int value)
 	{
 		if (value < 1)

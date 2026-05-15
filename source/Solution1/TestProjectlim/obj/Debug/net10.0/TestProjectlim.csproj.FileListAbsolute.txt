@@ -1,5 +1,11 @@
 D:\lim\source\Solution1\TestProjectlim\bin\Debug\net10.0\.msCoverageSourceRootsMapping_TestProjectlim
 D:\lim\source\Solution1\TestProjectlim\bin\Debug\net10.0\CoverletSourceRootsMapping_TestProjectlim
+D:\lim\source\Solution1\TestProjectlim\obj\Debug\net10.0\TestProjectlim.csproj.AssemblyReference.cache
+D:\lim\source\Solution1\TestProjectlim\obj\Debug\net10.0\TestProjectlim.GeneratedMSBuildEditorConfig.editorconfig
+D:\lim\source\Solution1\TestProjectlim\obj\Debug\net10.0\TestProjectlim.AssemblyInfoInputs.cache
+D:\lim\source\Solution1\TestProjectlim\obj\Debug\net10.0\TestProjectlim.AssemblyInfo.cs
+D:\lim\source\Solution1\TestProjectlim\obj\Debug\net10.0\TestProjectlim.csproj.CoreCompileInputs.cache
+D:\lim\source\Solution1\TestProjectlim\obj\Debug\net10.0\TestProjectlim.sourcelink.json
 D:\lim\source\Solution1\TestProjectlim\bin\Debug\net10.0\testhost.dll
 D:\lim\source\Solution1\TestProjectlim\bin\Debug\net10.0\xunit.abstractions.dll
 D:\lim\source\Solution1\TestProjectlim\bin\Debug\net10.0\testhost.exe
@@ -88,12 +94,6 @@ D:\lim\source\Solution1\TestProjectlim\bin\Debug\net10.0\zh-Hant\Microsoft.Visua
 D:\lim\source\Solution1\TestProjectlim\bin\Debug\net10.0\DirectoryService.Domain.dll
 D:\lim\source\Solution1\TestProjectlim\bin\Debug\net10.0\DirectoryService.Domain.pdb
 D:\lim\source\Solution1\TestProjectlim\bin\Debug\net10.0\DirectoryService.Domain.dll.config
-D:\lim\source\Solution1\TestProjectlim\obj\Debug\net10.0\TestProjectlim.csproj.AssemblyReference.cache
-D:\lim\source\Solution1\TestProjectlim\obj\Debug\net10.0\TestProjectlim.GeneratedMSBuildEditorConfig.editorconfig
-D:\lim\source\Solution1\TestProjectlim\obj\Debug\net10.0\TestProjectlim.AssemblyInfoInputs.cache
-D:\lim\source\Solution1\TestProjectlim\obj\Debug\net10.0\TestProjectlim.AssemblyInfo.cs
-D:\lim\source\Solution1\TestProjectlim\obj\Debug\net10.0\TestProjectlim.csproj.CoreCompileInputs.cache
-D:\lim\source\Solution1\TestProjectlim\obj\Debug\net10.0\TestProjectlim.sourcelink.json
 D:\lim\source\Solution1\TestProjectlim\obj\Debug\net10.0\TestProj.1514A7EC.Up2Date
 D:\lim\source\Solution1\TestProjectlim\obj\Debug\net10.0\TestProjectlim.dll
 D:\lim\source\Solution1\TestProjectlim\obj\Debug\net10.0\refint\TestProjectlim.dll
