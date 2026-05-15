@@ -1,0 +1,33 @@
+﻿using DirectoryService.Domain.DepartmentContexts;
+
+namespace DirectoryService.Domain.DepartmentContext.ValueObjects;
+
+public class DepVerification
+{
+	private readonly List<Department> _existingDepartments;
+
+	private DepVerification()
+	{
+		_existingDepartments = new List<Department>();
+	}
+
+	public DepVerification(List<Department> existingDepartments)
+	{
+		_existingDepartments = existingDepartments ?? new List<Department>();
+	}
+
+	public bool CheckUniqueness(Department department)
+	{
+		if (department == null)
+			return false;
+		return !_existingDepartments.Any(d => d.Name.Value == department.Name.Value && d.Id != department.Id);
+	}
+
+	public bool CheckIdentifierUniqueness(DepartmentIdentifier identifier)
+	{
+		var exists = _existingDepartments.Any(d =>
+			string.Equals(d.Identifier.Value, identifier.Value, StringComparison.Ordinal)
+		);
+		return !exists;
+	}
+}

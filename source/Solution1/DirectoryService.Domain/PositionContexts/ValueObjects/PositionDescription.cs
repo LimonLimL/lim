@@ -1,0 +1,35 @@
+﻿namespace DirectoryService.Domain.PositionContext.ValueObjects;
+
+public record PositionDescription
+{
+	public string Value { get; }
+
+	private PositionDescription(string value)
+	{
+		Value = value;
+	}
+
+	private PositionDescription()
+	{
+		Value = string.Empty;
+	}
+
+	private const int MaxLength = 500;
+
+	public static PositionDescription Create(string description)
+	{
+		if (description == null)
+		{
+			return new PositionDescription(string.Empty);
+		}
+
+		if (description.Length > MaxLength)
+		{
+			throw new ArgumentException($"Описание не может превышать {MaxLength} символов.", nameof(description));
+		}
+
+		return new PositionDescription(description.Trim());
+	}
+
+	public bool IsEmpty => string.IsNullOrEmpty(Value);
+}
