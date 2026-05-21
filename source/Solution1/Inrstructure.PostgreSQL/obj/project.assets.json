@@ -963,6 +963,19 @@
           "buildTransitive/net8.0/_._": {}
         }
       },
+      "Application/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v10.0",
+        "dependencies": {
+          "DirectoryService.Domain": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Application.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Application.dll": {}
+        }
+      },
       "DirectoryService.Domain/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v10.0",
@@ -3008,6 +3021,11 @@
         "useSharedDesignerContext.txt"
       ]
     },
+    "Application/1.0.0": {
+      "type": "project",
+      "path": "../ClassLibrary1/Application.csproj",
+      "msbuildProject": "../ClassLibrary1/Application.csproj"
+    },
     "DirectoryService.Domain/1.0.0": {
       "type": "project",
       "path": "../DirectoryService.Domain/DirectoryService.Domain.csproj",
@@ -3016,6 +3034,7 @@
   },
   "projectFileDependencyGroups": {
     "net10.0": [
+      "Application >= 1.0.0",
       "DirectoryService.Domain >= 1.0.0",
       "Microsoft.EntityFrameworkCore >= 10.0.7",
       "Microsoft.EntityFrameworkCore.Design >= 10.0.7",
@@ -3057,6 +3076,9 @@
         "net10.0": {
           "targetAlias": "net10.0",
           "projectReferences": {
+            "D:\\lim\\source\\Solution1\\ClassLibrary1\\Application.csproj": {
+              "projectPath": "D:\\lim\\source\\Solution1\\ClassLibrary1\\Application.csproj"
+            },
             "D:\\lim\\source\\Solution1\\DirectoryService.Domain\\DirectoryService.Domain.csproj": {
               "projectPath": "D:\\lim\\source\\Solution1\\DirectoryService.Domain\\DirectoryService.Domain.csproj"
             }

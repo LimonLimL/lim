@@ -34,7 +34,7 @@ internal sealed class LocationConfiguration : IEntityTypeConfiguration<Location>
                 addressBuilder
                     .Property(a => a.Value)
                     .HasColumnName("location_address")
-                    .HasColumnType("jsonb")
+                    .HasColumnType("text")
                     .IsRequired();
             }
         );

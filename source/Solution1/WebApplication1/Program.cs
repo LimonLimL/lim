@@ -1,9 +1,17 @@
+using Application.DepartmentContext.CreateDepartment;
+using Application.DepartmentContext.UpdateDepartment;
+using Application.LocationsContext.CreateLocation;
+using DirectoryService.Domain.DepartmentContext;
+using DirectoryService.Domain.LocationContexts.Contracts;
 using DirectoryService.Domain.LocationsContext;
 using DirectoryService.Domain.LocationsContext.ValueObjects;
 using DirectoryService.Domain.PositionContext;
 using DirectoryService.Domain.PositionContext.ValueObjects;
+using DirectoryService.Domain.PositionContexts.Contracts;
 using DirectoryService.Domain.Shared.ValueObjects;
 using DirectoryService.WebApi;
+using Infrastructure.PostgreSQL;
+using Infrastructure.PostgreSQL.Repositories;
 using Inrstructure.PostgreSQL;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.OpenApi;
@@ -13,6 +21,19 @@ Storage.InitializeStorage();
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddScoped<CreatePositionHandler>();
+builder.Services.AddScoped<CreateLocationHandler>();
+builder.Services.AddScoped<RenamePositionHandler>();
+builder.Services.AddScoped<UpdateLocationHandler>();
+builder.Services.AddScoped<DeletePositionHandler>();
+builder.Services.AddScoped<DeleteLocationHandler>();
+builder.Services.AddScoped<CreateDepartmentHandler>();
+builder.Services.AddScoped<UpdateDepartmentHandler>();
+builder.Services.AddScoped<DeleteDepartmentHandler>();
+
+builder.Services.AddScoped<IPositionRepository, PositionRepository>();
+builder.Services.AddScoped<ILocationRepository, LocationRepository>();
+builder.Services.AddScoped<IDepartmentRepository, DepartmentRepository>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
@@ -44,7 +65,10 @@ if (app.Environment.IsDevelopment())
         c.RoutePrefix = "swagger";
     });
 }
-
+if (builder.Environment.IsDevelopment())
+{
+    app.UseDeveloperExceptionPage();
+}
 app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();

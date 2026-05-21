@@ -1,8 +1,5 @@
-﻿using DirectoryService.Domain.PositionContext;
-using DirectoryService.Domain.PositionContext.ValueObjects;
-using DirectoryService.Domain.Shared.ValueObjects;
+﻿using DirectoryService.Domain.PositionContexts.Contracts;
 using Microsoft.AspNetCore.Mvc;
-using WebApplication1.Storage;
 
 namespace DirectoryService.WebApi.Controllers;
 
@@ -10,55 +7,27 @@ namespace DirectoryService.WebApi.Controllers;
 [Route("api/positions")]
 public sealed class PositionsController : ControllerBase
 {
-    [HttpGet]
-    public IResult GetPositions()
-    {
-        var positions = Storage.GetAllPositions();
-        return Results.Ok(positions);
-    }
-
-    [HttpGet("{id}")]
-    public IResult GetPositionById([FromRoute(Name = "id")] Guid id)
-    {
-        var positionId = PositionId.From(id);
-        var position = Storage.GetById(positionId);
-
-        if (position is null)
-            return Results.NotFound($"Должность с ID {id} не найдена или архивирована.");
-
-        return Results.Ok(position);
-    }
-
     [HttpPost]
-    public IResult CreatePosition([FromBody] CreatePositionRequest request)
+    public async Task<IResult> CreatePosition(
+        [FromBody] CreatePositionRequest request,
+        [FromServices] CreatePositionHandler handler,
+        CancellationToken ct
+    )
     {
         try
         {
-            if (string.IsNullOrWhiteSpace(request.Name))
-                return Results.BadRequest("Название должности не может быть пустым.");
+            var command = new CreatePositionCommand(request.Name, request.Description);
 
-            var name = PositionName.Create(request.Name);
-            var description = PositionDescription.Create(request.Description ?? string.Empty);
-            var isActive = IsActive.Create(request.IsActive);
-            var now = DateTime.UtcNow;
-            var lifeTime = EntityLifeTime.Create(now, now, null, true);
-
-            var existingPositions = Storage.GetAllPositions().ToList();
-            var verification = new InMemoryPosVerification(existingPositions);
-
-            var position = Position.Create(name, description, isActive, lifeTime, verification);
-
-            Storage.Add(position);
-
-            return Results.Created($"/api/positions/{position.Id.Value}", position);
-        }
-        catch (InvalidOperationException ex)
-        {
-            return Results.Conflict(ex.Message);
+            var createdId = await handler.Handle(command, ct);
+            return Results.Created($"/api/positions/{createdId}", new { Id = createdId });
         }
         catch (ArgumentException ex)
         {
             return Results.BadRequest(ex.Message);
+        }
+        catch (InvalidOperationException ex)
+        {
+            return Results.Conflict(ex.Message);
         }
         catch (Exception)
         {
@@ -66,66 +35,44 @@ public sealed class PositionsController : ControllerBase
         }
     }
 
-    [HttpPatch("{id}")]
-    public IResult UpdatePosition(
-        [FromRoute(Name = "id")] Guid id,
-        [FromBody] UpdatePositionRequest request
+    [HttpGet]
+    public async Task<IResult> GetPositions(
+        [FromServices] IPositionRepository repository,
+        CancellationToken ct
+    )
+    {
+        var positions = await repository.GetAll(ct);
+        return Results.Ok(positions);
+    }
+
+    [HttpGet("{id}")]
+    public async Task<IResult> GetPositionById(
+        [FromRoute] Guid id,
+        [FromServices] IPositionRepository repository,
+        CancellationToken ct
+    )
+    {
+        var position = await repository.GetById(id, ct);
+
+        if (position is null)
+            return Results.NotFound($"Должность с ID {id} не найдена.");
+
+        return Results.Ok(position);
+    }
+
+    [HttpPut("{id}/rename")]
+    public async Task<IResult> RenamePosition(
+        [FromRoute] Guid id,
+        [FromBody] RenamePositionRequest request,
+        [FromServices] RenamePositionHandler handler,
+        CancellationToken ct
     )
     {
         try
         {
-            var positionId = PositionId.From(id);
-            var existingPosition = Storage.GetById(positionId);
-
-            if (existingPosition is null)
-                return Results.NotFound($"Должность с ID {id} не найдена или архивирована.");
-
-            if (request.Name is null && request.Description is null && request.IsActive is null)
-                return Results.BadRequest("Хотя бы одно поле для обновления должно быть указано.");
-
-            if (request.Name is not null && string.IsNullOrWhiteSpace(request.Name))
-                return Results.BadRequest("Название должности не может быть пустым.");
-
-            if (
-                request.Name is not null
-                && !request.Name.Equals(
-                    existingPosition.Name.Value,
-                    StringComparison.OrdinalIgnoreCase
-                )
-            )
-            {
-                var allPositions = Storage.GetAllPositions();
-                if (
-                    allPositions.Any(p =>
-                        p.Name.Value.Equals(request.Name, StringComparison.OrdinalIgnoreCase)
-                    )
-                )
-                    return Results.Conflict($"Должность с именем '{request.Name}' уже существует.");
-            }
-
-            var newName = request.Name is not null
-                ? PositionName.Create(request.Name)
-                : existingPosition.Name;
-            var newDescription = request.Description is not null
-                ? PositionDescription.Create(request.Description)
-                : existingPosition.Description;
-            var newIsActive = request.IsActive.HasValue
-                ? IsActive.Create(request.IsActive.Value)
-                : existingPosition.IsActive;
-            var newLifeTime = existingPosition.LifeTime.Update();
-
-            var updatedPosition = Position.Restore(
-                existingPosition.Id,
-                newName,
-                newDescription,
-                newIsActive,
-                newLifeTime
-            );
-
-            Storage.HardRemove(positionId);
-            Storage.Add(updatedPosition);
-
-            return Results.Ok(updatedPosition);
+            var command = new RenamePositionCommand(id, request.NewName);
+            var updatedId = await handler.Handle(command, ct);
+            return Results.Ok(new { Id = updatedId });
         }
         catch (ArgumentException ex)
         {
@@ -137,58 +84,36 @@ public sealed class PositionsController : ControllerBase
         }
         catch (Exception)
         {
-            return Results.Problem("Произошла ошибка при обновлении должности.");
+            return Results.Problem("Произошла ошибка при переименовании должности.");
         }
     }
 
-    [HttpDelete("{id}")]
-    public IResult DeletePosition([FromRoute(Name = "id")] Guid id)
+    [HttpDelete]
+    public async Task<IResult> DeletePositions(
+        [FromBody] DeletePositionsRequest request,
+        [FromServices] DeletePositionHandler handler,
+        CancellationToken ct
+    )
     {
         try
         {
-            var positionId = PositionId.From(id);
-            var existingPosition = Storage.GetById(positionId);
-
-            if (existingPosition is null)
-                return Results.NotFound($"Должность с ID {id} не найдена или уже архивирована.");
-
-            Storage.Remove(positionId);
-            return Results.Ok($"Должность с ID {id} успешно архивирована.");
+            var command = new DeletePositionCommand(request.Ids);
+            var deletedIds = await handler.Handle(command, ct);
+            return Results.Ok(new { Ids = deletedIds });
         }
-        catch (KeyNotFoundException ex)
+        catch (InvalidOperationException ex)
         {
             return Results.NotFound(ex.Message);
         }
         catch (Exception)
         {
-            return Results.Problem("Произошла ошибка при удалении должности.");
-        }
-    }
-
-    [HttpDelete("{id}/hard")]
-    public IResult HardDeletePosition([FromRoute(Name = "id")] Guid id)
-    {
-        try
-        {
-            var positionId = PositionId.From(id);
-            var removed = Storage.HardRemove(positionId);
-
-            if (!removed)
-                return Results.NotFound($"Должность с ID {id} не найдена.");
-
-            return Results.Ok($"Должность с ID {id} успешно удалена.");
-        }
-        catch (Exception)
-        {
-            return Results.Problem("Произошла ошибка при удалении должности.");
+            return Results.Problem("Произошла ошибка при удалении должностей.");
         }
     }
 }
 
-public sealed record CreatePositionRequest(string Name, string Description, bool IsActive);
+public sealed record CreatePositionRequest(string Name, string? Description = null);
 
-public sealed record UpdatePositionRequest(
-    string? Name = null,
-    string? Description = null,
-    bool? IsActive = null
-);
+public sealed record RenamePositionRequest(string NewName);
+
+public sealed record DeletePositionsRequest(IEnumerable<Guid> Ids);

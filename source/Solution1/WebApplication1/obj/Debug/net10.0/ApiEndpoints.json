@@ -1,12 +1,81 @@
 [
   {
-    "ContainingType": "DirectoryService.WebApi.Controllers.LocationsController",
-    "Method": "GetLocations",
-    "RelativePath": "api/locations",
+    "ContainingType": "DepartmentsController",
+    "Method": "CreateDepartment",
+    "RelativePath": "api/departments",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "CreateDepartmentRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DepartmentsController",
+    "Method": "GetDepartments",
+    "RelativePath": "api/departments",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DepartmentsController",
+    "Method": "GetDepartmentById",
+    "RelativePath": "api/departments/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DepartmentsController",
+    "Method": "UpdateDepartment",
+    "RelativePath": "api/departments/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "request",
+        "Type": "UpdateDepartmentRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DepartmentsController",
+    "Method": "DeleteDepartment",
+    "RelativePath": "api/departments/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   },
   {
@@ -23,6 +92,16 @@
         "IsRequired": true
       }
     ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DirectoryService.WebApi.Controllers.LocationsController",
+    "Method": "GetLocations",
+    "RelativePath": "api/locations",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
     "ReturnTypes": []
   },
   {
@@ -45,7 +124,7 @@
     "ContainingType": "DirectoryService.WebApi.Controllers.LocationsController",
     "Method": "UpdateLocation",
     "RelativePath": "api/locations/{id}",
-    "HttpMethod": "PATCH",
+    "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
     "Parameters": [
@@ -79,16 +158,16 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "DirectoryService.WebApi.Controllers.LocationsController",
-    "Method": "HardDeleteLocation",
-    "RelativePath": "api/locations/{id}/hard",
-    "HttpMethod": "DELETE",
+    "ContainingType": "DirectoryService.WebApi.Controllers.PositionsController",
+    "Method": "CreatePosition",
+    "RelativePath": "api/positions",
+    "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "id",
-        "Type": "System.Guid",
+        "Name": "request",
+        "Type": "DirectoryService.WebApi.Controllers.CreatePositionRequest",
         "IsRequired": true
       }
     ],
@@ -106,15 +185,15 @@
   },
   {
     "ContainingType": "DirectoryService.WebApi.Controllers.PositionsController",
-    "Method": "CreatePosition",
+    "Method": "DeletePositions",
     "RelativePath": "api/positions",
-    "HttpMethod": "POST",
+    "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
         "Name": "request",
-        "Type": "DirectoryService.WebApi.Controllers.CreatePositionRequest",
+        "Type": "DirectoryService.WebApi.Controllers.DeletePositionsRequest",
         "IsRequired": true
       }
     ],
@@ -138,9 +217,9 @@
   },
   {
     "ContainingType": "DirectoryService.WebApi.Controllers.PositionsController",
-    "Method": "UpdatePosition",
-    "RelativePath": "api/positions/{id}",
-    "HttpMethod": "PATCH",
+    "Method": "RenamePosition",
+    "RelativePath": "api/positions/{id}/rename",
+    "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
     "Parameters": [
@@ -151,39 +230,7 @@
       },
       {
         "Name": "request",
-        "Type": "DirectoryService.WebApi.Controllers.UpdatePositionRequest",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "DirectoryService.WebApi.Controllers.PositionsController",
-    "Method": "DeletePosition",
-    "RelativePath": "api/positions/{id}",
-    "HttpMethod": "DELETE",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Guid",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "DirectoryService.WebApi.Controllers.PositionsController",
-    "Method": "HardDeletePosition",
-    "RelativePath": "api/positions/{id}/hard",
-    "HttpMethod": "DELETE",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Guid",
+        "Type": "DirectoryService.WebApi.Controllers.RenamePositionRequest",
         "IsRequired": true
       }
     ],

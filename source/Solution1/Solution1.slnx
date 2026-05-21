@@ -2,6 +2,7 @@
   <Folder Name="/Элементы решения/">
     <File Path="docker-compose.yml" />
   </Folder>
+  <Project Path="ClassLibrary1/Application.csproj" Id="f19332ea-a1fe-42d5-92ca-0ef32a715b05" />
   <Project Path="DirectoryService.Domain/DirectoryService.Domain.csproj" Id="7d3a5845-5b0b-4e79-8310-acaf95458df3" />
   <Project Path="Inrstructure.PostgreSQL/Infrastructure.PostgreSQL.csproj" Id="c632e2ed-c2ee-4529-899a-f92982f88a23" />
   <Project Path="TestProjectlim/TestProjectlim.csproj" Id="fe24d343-e063-4c92-8bab-e3bd6048444d" />

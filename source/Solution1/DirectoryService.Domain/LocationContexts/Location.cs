@@ -42,11 +42,14 @@ public class Location
 		LifeTime = lifeTime;
 	}
 
-	private Location() { }
+	private Location(LocationId id)
+	{
+		Id = id;
+	}
 
 	public LocationId Id { get; } = null!;
 	public LocationName Name { get; set; } = null!;
-	public LocationAddress Address { get; } = null!;
+	public LocationAddress Address { get; private set; } = null!;
 	public EntityLifeTime LifeTime { get; set; } = null!;
 	public IanaTimeZone TimeZone { get; set; } = null!;
 
@@ -90,5 +93,30 @@ public class Location
 		IanaTimeZone ianaTimeZone = IanaTimeZone.Create(timeZone);
 		EntityLifeTime entityLifeTime = EntityLifeTime.Create(createdAt, updatedAt, null, true);
 		return new Location(locationId, locationAddress, locationName, ianaTimeZone, entityLifeTime);
+	}
+
+	public void Update(LocationName? newName, LocationAddress? newAddress)
+	{
+		if (LifeTime.IsActivate == false)
+		{
+			throw new InvalidOperationException("Невозможно обновить локацию, так как она неактивна.");
+		}
+
+		if (newName is null && newAddress is null)
+		{
+			throw new ArgumentException("Необходимо указать хотя бы одно поле для обновления.");
+		}
+
+		if (newName is not null)
+		{
+			Name = newName;
+		}
+
+		if (newAddress is not null)
+		{
+			Address = newAddress;
+		}
+
+		LifeTime = LifeTime.Update();
 	}
 }

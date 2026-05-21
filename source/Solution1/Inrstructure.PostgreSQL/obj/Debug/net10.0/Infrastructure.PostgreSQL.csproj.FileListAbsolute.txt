@@ -19,3 +19,5 @@ D:\lim\source\Solution1\Inrstructure.PostgreSQL\obj\Debug\net10.0\refint\Infrast
 D:\lim\source\Solution1\Inrstructure.PostgreSQL\obj\Debug\net10.0\Infrastructure.PostgreSQL.pdb
 D:\lim\source\Solution1\Inrstructure.PostgreSQL\obj\Debug\net10.0\Infrastructure.PostgreSQL.genruntimeconfig.cache
 D:\lim\source\Solution1\Inrstructure.PostgreSQL\obj\Debug\net10.0\ref\Infrastructure.PostgreSQL.dll
+D:\lim\source\Solution1\Inrstructure.PostgreSQL\bin\Debug\net10.0\Application.dll
+D:\lim\source\Solution1\Inrstructure.PostgreSQL\bin\Debug\net10.0\Application.pdb

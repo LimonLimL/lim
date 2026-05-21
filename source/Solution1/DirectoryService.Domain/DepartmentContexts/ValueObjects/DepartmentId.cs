@@ -36,7 +36,12 @@ public record DepartmentId
 
 	public static DepartmentId From(Guid? value)
 	{
-		throw new NotImplementedException();
+		if (value is null || value == Guid.Empty)
+		{
+			throw new ArgumentException("ID не может быть null или пустым.", nameof(value));
+		}
+
+		return new DepartmentId(value.Value);
 	}
 
 	private DepartmentId()

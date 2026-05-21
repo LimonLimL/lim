@@ -10,11 +10,14 @@ namespace DirectoryService.Domain.PositionContext;
 
 public class Position
 {
-	public void Rename(PositionName other)
+	public void Rename(PositionName newName)
 	{
 		if (LifeTime.IsActivate == false)
-			throw new InvalidOperationException("Сущность архивирована.");
-		Name = other;
+		{
+			throw new InvalidOperationException("Невозможно переименовать должность, так как она неактивна.");
+		}
+
+		Name = newName;
 		LifeTime = LifeTime.Update();
 	}
 

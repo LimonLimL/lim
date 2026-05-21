@@ -119,7 +119,7 @@ namespace Infrastructure.PostgreSQL.Migrations
 
                             b1.Property<string>("Value")
                                 .IsRequired()
-                                .HasColumnType("jsonb")
+                                .HasColumnType("text")
                                 .HasColumnName("location_address");
                         });
 

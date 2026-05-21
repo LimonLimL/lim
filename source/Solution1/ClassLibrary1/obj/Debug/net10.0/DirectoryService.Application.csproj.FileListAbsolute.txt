@@ -1,0 +1,6 @@
+D:\lim\source\Solution1\ClassLibrary1\obj\Debug\net10.0\DirectoryService.Application.csproj.AssemblyReference.cache
+D:\lim\source\Solution1\ClassLibrary1\obj\Debug\net10.0\DirectoryService.Application.GeneratedMSBuildEditorConfig.editorconfig
+D:\lim\source\Solution1\ClassLibrary1\obj\Debug\net10.0\DirectoryService.Application.AssemblyInfoInputs.cache
+D:\lim\source\Solution1\ClassLibrary1\obj\Debug\net10.0\DirectoryService.Application.AssemblyInfo.cs
+D:\lim\source\Solution1\ClassLibrary1\obj\Debug\net10.0\DirectoryService.Application.csproj.CoreCompileInputs.cache
+D:\lim\source\Solution1\ClassLibrary1\obj\Debug\net10.0\DirectoryService.Application.sourcelink.json

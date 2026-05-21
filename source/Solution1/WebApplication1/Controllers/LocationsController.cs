@@ -1,8 +1,6 @@
-﻿using DirectoryService.Domain.LocationsContext;
-using DirectoryService.Domain.LocationsContext.ValueObjects;
-using DirectoryService.Domain.Shared.ValueObjects;
+﻿using Application.LocationsContext.CreateLocation;
+using DirectoryService.Domain.LocationContexts.Contracts;
 using Microsoft.AspNetCore.Mvc;
-using WebApplication1.Storage;
 
 namespace DirectoryService.WebApi.Controllers;
 
@@ -10,129 +8,80 @@ namespace DirectoryService.WebApi.Controllers;
 [Route("api/locations")]
 public sealed class LocationsController : ControllerBase
 {
-    [HttpGet]
-    public IResult GetLocations()
-    {
-        var locations = Storage.GetAllLocations();
-        return Results.Ok(locations);
-    }
-
-    [HttpGet("{id}")]
-    public IResult GetLocationById([FromRoute(Name = "id")] Guid id)
-    {
-        var locationId = LocationId.From(id);
-        var location = Storage.GetById(locationId);
-
-        if (location is null)
-            return Results.NotFound($"Локация с ID {id} не найдена или архивирована.");
-
-        return Results.Ok(location);
-    }
-
     [HttpPost]
-    public IResult CreateLocation([FromBody] CreateLocationRequest request)
+    public async Task<IResult> CreateLocation(
+        [FromBody] CreateLocationRequest request,
+        [FromServices] CreateLocationHandler handler,
+        CancellationToken ct
+    )
     {
         try
         {
-            if (string.IsNullOrWhiteSpace(request.Name))
-                return Results.BadRequest("Название локации не может быть пустым.");
-
-            if (string.IsNullOrWhiteSpace(request.Address))
-                return Results.BadRequest("Адрес локации не может быть пустым.");
-
-            if (string.IsNullOrWhiteSpace(request.TimeZone))
-                return Results.BadRequest("Часовой пояс не может быть пустым.");
-
-            var now = DateTime.UtcNow;
-            var location = Location.Create(
-                Guid.NewGuid(),
-                request.Address,
+            var command = new CreateLocationCommand(
                 request.Name,
-                request.TimeZone,
-                now,
-                now
+                request.Address,
+                request.TimeZone
             );
 
-            Storage.Add(location);
-
-            return Results.Created($"/api/locations/{location.Id.Value}", location);
-        }
-        catch (InvalidOperationException ex)
-        {
-            return Results.Conflict(ex.Message);
+            var createdId = await handler.Handle(command, ct);
+            return Results.Created($"/api/locations/{createdId}", new { Id = createdId });
         }
         catch (ArgumentException ex)
         {
             return Results.BadRequest(ex.Message);
         }
-        catch (Exception)
+        catch (InvalidOperationException ex)
         {
-            return Results.Problem("Произошла ошибка при создании локации.");
+            return Results.Conflict(ex.Message);
+        }
+        catch (Exception ex)
+        {
+            return Results.Problem(
+                $"Детальная ошибка: {ex.Message}\n\n"
+                    + $"Stack trace: {ex.StackTrace}\n\n"
+                    + $"Inner exception: {ex.InnerException?.Message}"
+            );
         }
     }
 
-    [HttpPatch("{id}")]
-    public IResult UpdateLocation(
-        [FromRoute(Name = "id")] Guid id,
-        [FromBody] UpdateLocationRequest request
+    [HttpGet]
+    public async Task<IResult> GetLocations(
+        [FromServices] ILocationRepository repository,
+        CancellationToken ct
+    )
+    {
+        var locations = await repository.GetAll(ct);
+        return Results.Ok(locations);
+    }
+
+    [HttpGet("{id}")]
+    public async Task<IResult> GetLocationById(
+        [FromRoute] Guid id,
+        [FromServices] ILocationRepository repository,
+        CancellationToken ct
+    )
+    {
+        var location = await repository.GetById(id, ct);
+
+        if (location is null)
+            return Results.NotFound($"Локация с ID {id} не найдена.");
+
+        return Results.Ok(location);
+    }
+
+    [HttpPut("{id}")]
+    public async Task<IResult> UpdateLocation(
+        [FromRoute] Guid id,
+        [FromBody] UpdateLocationRequest request,
+        [FromServices] UpdateLocationHandler handler,
+        CancellationToken ct
     )
     {
         try
         {
-            var locationId = LocationId.From(id);
-            var existingLocation = Storage.GetById(locationId);
-
-            if (existingLocation is null)
-                return Results.NotFound($"Локация с ID {id} не найдена или архивирована.");
-
-            if (request.Name is null && request.Address is null && request.TimeZone is null)
-                return Results.BadRequest("Хотя бы одно поле для обновления должно быть указано.");
-
-            if (request.Name is not null && string.IsNullOrWhiteSpace(request.Name))
-                return Results.BadRequest("Название локации не может быть пустым.");
-
-            if (request.Address is not null && string.IsNullOrWhiteSpace(request.Address))
-                return Results.BadRequest("Адрес локации не может быть пустым.");
-
-            if (request.TimeZone is not null && string.IsNullOrWhiteSpace(request.TimeZone))
-                return Results.BadRequest("Часовой пояс не может быть пустым.");
-
-            if (
-                request.Name is not null
-                && !request.Name.Equals(
-                    existingLocation.Name.Value,
-                    StringComparison.OrdinalIgnoreCase
-                )
-            )
-            {
-                var allLocations = Storage.GetAllLocations();
-                if (
-                    allLocations.Any(l =>
-                        l.Name.Value.Equals(request.Name, StringComparison.OrdinalIgnoreCase)
-                    )
-                )
-                    return Results.Conflict($"Локация с именем '{request.Name}' уже существует.");
-            }
-
-            var now = DateTime.UtcNow;
-            var updatedLocation = new Location(
-                existingLocation.Id,
-                request.Address is not null
-                    ? LocationAddress.Create(request.Address)
-                    : existingLocation.Address,
-                request.Name is not null
-                    ? LocationName.Create(request.Name)
-                    : existingLocation.Name,
-                request.TimeZone is not null
-                    ? IanaTimeZone.Create(request.TimeZone)
-                    : existingLocation.TimeZone,
-                existingLocation.LifeTime.Update()
-            );
-
-            Storage.HardRemove(locationId);
-            Storage.Add(updatedLocation);
-
-            return Results.Ok(updatedLocation);
+            var command = new UpdateLocationCommand(id, request.NewName, request.NewAddress);
+            var updatedId = await handler.Handle(command, ct);
+            return Results.Ok(new { Id = updatedId });
         }
         catch (ArgumentException ex)
         {
@@ -149,20 +98,19 @@ public sealed class LocationsController : ControllerBase
     }
 
     [HttpDelete("{id}")]
-    public IResult DeleteLocation([FromRoute(Name = "id")] Guid id)
+    public async Task<IResult> DeleteLocation(
+        [FromRoute] Guid id,
+        [FromServices] DeleteLocationHandler handler,
+        CancellationToken ct
+    )
     {
         try
         {
-            var locationId = LocationId.From(id);
-            var existingLocation = Storage.GetById(locationId);
-
-            if (existingLocation is null)
-                return Results.NotFound($"Локация с ID {id} не найдена или уже архивирована.");
-
-            Storage.Remove(locationId);
-            return Results.Ok($"Локация с ID {id} успешно архивирована.");
+            var command = new DeleteLocationCommand(id);
+            var deletedId = await handler.Handle(command, ct);
+            return Results.Ok(new { Id = deletedId });
         }
-        catch (KeyNotFoundException ex)
+        catch (InvalidOperationException ex)
         {
             return Results.NotFound(ex.Message);
         }
@@ -171,31 +119,8 @@ public sealed class LocationsController : ControllerBase
             return Results.Problem("Произошла ошибка при удалении локации.");
         }
     }
-
-    [HttpDelete("{id}/hard")]
-    public IResult HardDeleteLocation([FromRoute(Name = "id")] Guid id)
-    {
-        try
-        {
-            var locationId = LocationId.From(id);
-            var removed = Storage.HardRemove(locationId);
-
-            if (!removed)
-                return Results.NotFound($"Локация с ID {id} не найдена.");
-
-            return Results.Ok($"Локация с ID {id} успешно удалена.");
-        }
-        catch (Exception)
-        {
-            return Results.Problem("Произошла ошибка при удалении локации.");
-        }
-    }
 }
 
-public sealed record CreateLocationRequest(string Address, string Name, string TimeZone);
+public sealed record CreateLocationRequest(string Name, string Address, string TimeZone);
 
-public sealed record UpdateLocationRequest(
-    string? Address = null,
-    string? Name = null,
-    string? TimeZone = null
-);
+public sealed record UpdateLocationRequest(string? NewName, string? NewAddress);
